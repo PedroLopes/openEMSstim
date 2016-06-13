@@ -44,14 +44,17 @@ more will generate a visible contraction on your palm (closing it gently).
 13. Then turn off the machine (electrodes are still on you). 
 14. Take the electrodes off. 
 
-## 3. Connecting the EMS control module to an Android Device & App.
+## 3. Powering the openEMS on. 
 
+**Turn it on by safely connecting it to a 9V battery. ** Please check the polarity of the battery (+ and - are correctly inserted) of the battery before connecting. 
 
 ## 4. Connecting the EMS control module to an Android Device & App.
 
 In order to control your EMS device via openEMS you need to send commands via bluetooth (or serial, bue here we prefer bluetooth over serial). Here's the steps to do so:
 1. If your phone does not have BT4.0 aka Bluetooth LE (Low Energy). Stop. 
-2. 
+2. Turn own your bluetooth (settings of the phone)
+3. Check whether the bluetooth can see your EMS device. Write down the name of it, it is probably something like openEMS01 (see here for my naming conventions).
+4. Open one of our EMS apps, I recommend: test-openEMS.apk (install it just by tapping on it and Android will install it, you can even copy it via USB or )
 
 ## 5. Setting all levels to low, before any test.
 
@@ -80,7 +83,7 @@ Important: some EMS devices (mostly the digital ones) shut off if the electrodes
 
 ### The openEMS board is off.
 
-**Turn it on by safely connecting it to a 9V battery. **Please (triple) check the polarity if the battery before connecting. The modded boards have a safety diode to prevent inverse polarity but the awesome original design by Max and Tim does not and might break on inverted polarity.
+**Turn it on by safely connecting it to a 9V battery. **Please (triple) check the polarity of the battery before connecting. The modded boards have a safety diode to prevent inverse polarity but the awesome original design by Max and Tim does not and might break on inverted polarity.
 
 If the board does not power after the 9V battery has been correctly inserted:
 
@@ -107,6 +110,14 @@ The best way to debug this is stage by stage:
 3. open a app that monitors the bluetooth connections on your device (for instance for android I recommend: BLE scanner). Does the device show up there?
 4. Try to use the BLE scanner app to connect to the device. Does it connect (blue light of the openEMS goes on?)
 5. If all above is true, you simply need to "restart" the EMS control apps, maybe they are buggy or got stuck. On an android you need to "close the app" to restart it", do not simply tap the home button (just suspends the app). Press the task switcher and swipe the app to close it. 
+
+### I cannot install any of the openEMS apps
+
+**Did you grab the apk from this repo?**: Make sure you enable "install apps from any source" on your developer settings, which live under the settings of you android. Since our apps are not (yet) on the android store, they are not "signed" and hence available without this check. 
+
+**Did you install it from android store (goole play store)?**: this could be caused by a version mismatch, currently the app works only on android >4.2 (which has the libraries that we use for accessing the bluetooth LE). If you've checked that you have such an android version and still have this issue, please write us a bug report via the repo / guthub issues report, or email us directly. 
+
+**Did you build it from source?**: Double check you are generating the correct permissions! Android apps have a file called app manifest (https://developer.android.com/guide/topics/manifest/manifest-intro.html) in which the app reports to the operating system which permissions are required while running. Our app requires bluetooth so that permission must be present in that file. 
 
 
 ## The openEMS responds to bluetooth and EMS/TENS is sending signals but I don't feel anything.
