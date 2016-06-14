@@ -1,7 +1,7 @@
-# What is openEMS? An open source hardware module to control off-the-shelf EMS/TENS devices
-This is the openEMS, a **hardware board** based on an Arduino Nano that modulates the amplitude of Electrical Muscle Stimulation (EMS) signals. Here you also find the **software** that communicates with the board and controls it. This board is controllable via *Bluetooth* and compatible with any *BLE* device you have (such as your smartphone). It also is controllable via *Serial* (USB) by plugging in a USB cable from your computer to the *Arduino Nano* on the board. 
+# What is openEMSstim? An open source hardware module to control off-the-shelf EMS/TENS devices
+This is the openEMSstim, a **hardware board** based on an Arduino Nano that modulates the amplitude of Electrical Muscle Stimulation (EMS) signals. Here you also find the **software** that communicates with the board and controls it. This board is controllable via *Bluetooth* and compatible with any *BLE* device you have (such as your smartphone). It also is controllable via *Serial* (USB) by plugging in a USB cable from your computer to the *Arduino Nano* on the board. 
 
-The openEMS is a mod from <>. See the License which acknoledges all the work from the original makers. 
+The openEMSstim is a mod from <>. See the License which acknoledges all the work from the original makers. 
 
 # How to connect this board
 ![How to connect your board](/Tutorial/connecting_to_the_board.png)
