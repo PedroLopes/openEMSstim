@@ -1,4 +1,4 @@
-# What is openEMSstim? An open source hardware module to control off-the-shelf EMS/TENS devices
+# openEMSstim: open-hardware module to adjust the intensity of EMS/TENS stimulators. 
 
 This is the openEMSstim, a **hardware board** based on an Arduino Nano that modulates the amplitude of Electrical Muscle Stimulation (EMS) signals. Here you also find the **software** that communicates with the board and controls it. This board is controllable via *Bluetooth* and compatible with any *BLE* device you have (such as your smartphone). It also is controllable via *Serial* (USB) by plugging in a USB cable from your computer to the *Arduino Nano* on the board. 
 
