@@ -1,6 +1,6 @@
 # Choosing the right TENS device to use with openEMSstim
 
-Like most amplifiers this EMS control board looses some signal intensity. This means you need to feed it with a "strong enough" EMS signal to produce a visible contraction on the user's muscles (this naturally depends on the skin conductivity, electrode placement, size of muscle, etc). 
+Like most amplifiers the openEMSstim control board looses some signal intensity. This means you need to feed it with a "strong enough" EMS signal to produce a visible contraction on the user's muscles (this naturally depends on the skin conductivity, electrode placement, size of muscle, etc). 
 
 Please note that some TENS machines (specially the really small ones, often powered by button cells instead of 9v blocks) will not provide sufficient current (milliamps) for you to have a visible contraction of the muscle. If your plan is to generate muscle contractions with some force, e.g., for force-feedback applications such as <this one>, avoid those. Instead, search for a medically compliant (check regulation of your country) EMS or TENS machine, typically those powered by 9V and inspect the specifications before buying it. You are looking for a machine that has one or two channels (preferrably two) and an output current of 70~100mA.  
 
@@ -16,4 +16,5 @@ Here's a list of machines we have tested with this system (if you have new ones 
 
 ### License and Liability
 
-<include this in all files>
+Please read the license at []() and the waiver at [](). 
+
