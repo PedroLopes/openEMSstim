@@ -16,7 +16,7 @@ The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the [EMS toolkit](https
 
 # Getting started
 
-All the necessary information for getting started is compiled in a step-by-step tutorial, start here. 
+All the necessary information for getting started is compiled in a step-by-step tutorial, [start here](getting_started_step_by_step.md). 
 
 ### Copyright for this repo's software, casings & hardware
 * Copyright 2016 by Pedro Lopes <plopesresearch@gmail.com> (Software, Cases, Hardware Remix)
