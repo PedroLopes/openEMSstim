@@ -4,7 +4,7 @@ This is the openEMSstim, a **hardware board** based on an Arduino Nano that modu
 
 <img src="https://raw.githubusercontent.com/PedroLopes/openEMSstim/master/extra/openEMSstim-logo/openEMSstim-logo.png?token=AADhAYyaiVU1NbLy_aTXN5kIQl47FTQ0ks5XaUU1wA%3D%3D" width="200">
 
-The openEMSstim is a mod by []Pedro Lopes](plopes.org) of the [EMS toolkit](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home). See the License which acknoledges all the work from the original makers. This project is forked as to provide a simpler design with a few changes. 	
+The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the [EMS toolkit](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home). See the License which acknoledges all the work from the original makers. This project is forked as to provide a simpler design with a few changes. 	
 
 # Read before using
 * Read the [LICENSE](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home/License)
