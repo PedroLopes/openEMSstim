@@ -6,7 +6,6 @@
  */ 
  
 // Necessary files (AltSoftSerial.h, AD5252.h, Rn4020BTLe.h, EMSSystem.h, EMSChannel.h) and dependencies (Wire.h, Arduino.h)
-//#include "Arduino_Software.h" // I think this is not needed, is it? // testing
 #include "Arduino.h"
 #include "AltSoftSerial.h"
 #include "Wire.h"
