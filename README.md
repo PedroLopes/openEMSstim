@@ -2,7 +2,7 @@
 
 This is the openEMSstim, a **hardware board** based on an Arduino Nano that modulates the amplitude of Electrical Muscle Stimulation (EMS) signals. Here you also find the **software** that communicates with the board and controls it. This board is controllable via *Bluetooth* and compatible with any *BLE* device you have (such as your smartphone). It also is controllable via *Serial* (USB) by plugging in a USB cable from your computer to the *Arduino Nano* on the board. 
 
-<img src="https://raw.githubusercontent.com/PedroLopes/openEMSstim/master/extra/openEMSstim-logo/openEMSstim-logo.png?token=AADhAYyaiVU1NbLy_aTXN5kIQl47FTQ0ks5XaUU1wA%3D%3D" width="200">
+<img src="https://raw.githubusercontent.com/PedroLopes/openEMSstim/master/extra/openEMSstim-logo/openEMSstim-logo.png" width="200">
 
 The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the [EMS toolkit](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home). See the License which acknoledges all the work from the original makers. This project is forked as to provide a simpler design with a few changes. 	
 
@@ -32,5 +32,5 @@ Some rights reserved. See [LICENSE](https://bitbucket.org/MaxPfeiffer/letyourbod
 
 ### Liability
 
-<include this in all files>
+Please refer to the liability waiver (in documentation/liability_waiver.md).
 

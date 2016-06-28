@@ -16,5 +16,7 @@ Here's a list of machines we have tested with this system (if you have new ones 
 
 ### License and Liability
 
-Please read the license at []() and the waiver at [](). 
+Please refer to the liability waiver (in documentation/liability_waiver.md).
+
+Please refer to the license (in /license.md)
 
