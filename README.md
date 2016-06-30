@@ -4,9 +4,13 @@ This is the openEMSstim, a **hardware board** based on an Arduino Nano that modu
 
 <img src="https://raw.githubusercontent.com/PedroLopes/openEMSstim/master/extra/openEMSstim-logo/openEMSstim-logo.png?token=AADhAePLmi3ZrECu3mzN0lNpZyRkU_ehks5XfBRKwA%3D%3D" width="200">
 
+
+
 ## Getting started (tutorial)
 
-All the necessary information for getting started is compiled in a step-by-step tutorial, [start here](start-here-tutorials/getting_started_step_by_step.md). 
+All the necessary information for getting started is compiled in a step-by-step tutorial, [start here](start-here-tutorials/1.getting_started_step_by_step.md). 
+
+![How to connect your board](extra/images/getting-started/1-the-openemsstim-labels.png)
 
 ## Why this project?
 
