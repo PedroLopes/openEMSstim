@@ -157,6 +157,7 @@ Pfeiffer &amp; Duente v0.1</text>
 <text x="38.1" y="46.4566" size="1.778" layer="1">+</text>
 <text x="38.1" y="49.8602" size="1.778" layer="1">-</text>
 <text x="38.354" y="48.8442" size="0.508" layer="1">9v</text>
+<text x="26.9494" y="1.2954" size="1.778" layer="1" rot="R90">&lt;- usb </text>
 </plain>
 <libraries>
 <library name="resistor">
