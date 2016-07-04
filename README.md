@@ -12,7 +12,7 @@ All the necessary information for getting started is compiled in a step-by-step 
 
 ## Why this project?
 
-The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the [EMS toolkit](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home). See the License which acknoledges all the work from the original makers. This project is forked to (1) provide a simpler design with a few changes, (2) preserve the original design and credit without pulling all the changes to it and (3) be used in the [UIST Student Innovation Contest 2016](https://uist.acm.org/uist2016/contest) without needing to change the instructions of the original project which is meant for HCI researchers and not for a UIST student audience. 	
+The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the awesome [EMS toolkit](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home). See the License which acknoledges all the work from the original makers. This project is forked to (1) provide a simpler design with a few changes, (2) preserve the original design and credit without pulling all the changes to it and (3) be used in the [UIST Student Innovation Contest 2016](https://uist.acm.org/uist2016/contest) without needing to change the instructions of the original project which is meant for HCI researchers and not for a UIST student audience. 	
 ## Read before using
 * Read the [LICENSE](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home/License)
 * Make sure you follow the safety instructions before using it and you are familiar with all the procedure of how to apply EMS safely.
@@ -25,7 +25,7 @@ The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the [EMS toolkit](https
 * Copyright 2016 by Pedro Lopes <plopesresearch@gmail.com> (Software, Cases, Hardware Remix)
 * Copyright 2016 by Doga Yuksel <dogayuksel@gmail.com> (Cases)
 
-### Copyright from the original design   
+### Copyright from the original board design (EMS Toolkit)
 * Copyright 2016 by Tim Dünte <tim.duente@hci.uni-hannover.de>
 * Copyright 2016 by Max Pfeiffer <max.pfeiffer@hci.uni-hannover.de>
 
