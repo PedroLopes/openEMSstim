@@ -2,7 +2,7 @@
 
 This is the openEMSstim, a **hardware board** based on an Arduino Nano that modulates the amplitude of Electrical Muscle Stimulation (EMS) signals. Here you also find the **software** that communicates with the board and controls it (android, unity, etc). This board is controllable via *Bluetooth* and compatible with any *BLE* device you have (such as your smartphone). It also is controllable via *Serial* (USB) by plugging in a USB cable from your computer to the *Arduino Nano* on the board. 
 
-<img src="https://raw.githubusercontent.com/PedroLopes/openEMSstim/master/extra/openEMSstim-logo/openEMSstim-logo.png?token=AADhAePLmi3ZrECu3mzN0lNpZyRkU_ehks5XfBRKwA%3D%3D" width="200">
+![How to connect your board](extra/openEMSstim-logo/openEMSstim-logo200px.png)
 
 ## Getting started (tutorial)
 
