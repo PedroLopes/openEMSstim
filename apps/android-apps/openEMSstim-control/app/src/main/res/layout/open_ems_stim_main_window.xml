@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".OpenEMSstim"
+    android:backgroundTint="#000000"
+    android:background="#000000">
+
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView">
+
+    </ScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:weightSum="1">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/left_button_text"
+                android:id="@+id/buttonLeft"
+                android:layout_gravity="left|top"
+                android:minHeight="125dp"
+                android:background="#ffeaf6ff"
+                android:layout_margin="5dp"
+                android:enabled="false" />
+
+            <SeekBar
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBarLeft" />
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacer_options" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="type your device id:"
+                android:id="@+id/textView"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/connect_toggle_text_size"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/device_name_text"
+                android:textColor="#ffffff"
+                android:text="openEMS01" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/right_button_text"
+                android:id="@+id/buttonRight"
+                android:singleLine="false"
+                android:layout_gravity="top|right"
+                android:minHeight="125dp"
+                android:background="#ffeaf6ff"
+                android:layout_margin="5dp"
+                android:enabled="false" />
+
+            <SeekBar
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/seekBarRight"
+                android:layout_gravity="bottom|right" />
+
+
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacer_options" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Connect/Disconnect"
+                android:id="@+id/text_connect_toggle"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/connect_toggle_text_size"
+                android:layout_marginTop="8dp" />
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="connect_toggle"
+                android:id="@+id/connect_toggle" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">openEMSstim</string>
+    <string name="ble_not_supported">Your phone does not support Bluetooth LE.</string>
+    <string name="left_button_text">Channel 1</string>
+    <string name="right_button_text">Channel 2</string>
+</resources>
