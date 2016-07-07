@@ -14,7 +14,6 @@
  * <https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home/License>
  */
 
-
 package openEMSstim;
 
 import android.app.Activity;
@@ -54,9 +53,6 @@ import openEMSstim.ems.IEMSModule;
 public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
     private Button buttonRightOn;
     private Button buttonLeftOn;
-    private RadioGroup radiosLeft;
-    private RadioGroup radiosRight;
-
     private String greyColor = "#ffeaf6ff";
 
     private String configFileName = "openEMSstim_configuration.txt";
@@ -64,13 +60,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
 
     private IEMSModule currentEmsModule;
     private String currentDeviceName = "";
-
-    private int currentDeviceIndex = 0;
     private EditText device_name_text_field;
-
-    private static final int REQUEST_ENABLE_BT = 1;
-    private static final String TAG = "OpenEMSstim";
-    private EditText input;
 
     private void writeDeviceNameToConfigFile() {
         try {
@@ -199,44 +189,14 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
 
     }
 
-    /*private AlertDialog.Builder getNewAlertDialog() {
-        AlertDialog.Builder alert;
-        //Creation of an AlertDialog
-        alert = new AlertDialog.Builder(this);
-
-        alert.setTitle("device ID");
-        alert.setMessage("Enter the name of the device you wish to connect.");
-
-        // Set an EditText view to get user input
-        input = new EditText(this);
-        input.setText(currentDeviceName);
-
-        alert.setView(input);
-
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                currentDeviceName = input.getText().toString();
-                currentEmsModule.setDeviceName(input.getText().toString());
-                writeDeviceNameToConfigFile();
-                dialog.dismiss();
-
-            }
-        });
-
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-
-                dialog.cancel();
-            }
-        });
-
-        return alert;
-    }*/
-
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (v == buttonRightOn) {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+
+            currentEmsModule.tester();
+
+
+            /*if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 currentEmsModule.startCommand(1);
                 buttonRightOn.setBackgroundColor(Color.RED);
                 //Log.i(TAG, "SEND START COMMAND 1");
@@ -255,7 +215,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
                 buttonLeftOn.setBackgroundColor(Color.GREEN);
                 //Log.i(TAG, "SEND STOP COMMAND 0");
             }
-        }
+        */}
         v.performClick();
         return false;
     }

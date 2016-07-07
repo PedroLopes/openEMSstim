@@ -53,7 +53,13 @@ public class EMSModule implements IEMSModule {
         return bleConnector;
     }
 
-@Override
+    @Override
+    public void tester() {
+        bleConnector.sendMessageToEMSDevice("C" + "0" + "I0T0G");
+        Log.w(TAG, "TESTER SENT: " + "C" + "0" + "I0T0G");
+    }
+
+    @Override
     public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
         if (bleConnector.isConnected()) {
@@ -161,6 +167,7 @@ public class EMSModule implements IEMSModule {
 
     /*
     Patterns
+    Note by Pedro: will take this out, this app will not modulate patterns
      */
     // Pattern 1:
     //Increases the current from 0 to maximum intensity in 1000 ms then start form 0

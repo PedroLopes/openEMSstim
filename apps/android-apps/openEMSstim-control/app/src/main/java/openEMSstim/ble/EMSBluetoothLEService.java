@@ -47,7 +47,7 @@ public class EMSBluetoothLEService extends BluetoothGattCallback implements IEMS
 
     //Bluetooth
     private BluetoothGattCallback mGattCallback;
-    private BluetoothDevice mDevice;
+    private BluetoothDevice mDevice; //currently scan is not being performed.
     private BluetoothAdapter blAdapter;
     private BluetoothGatt mBluetoothGatt;
     private BluetoothGattCharacteristic characteristic;
@@ -98,6 +98,9 @@ public class EMSBluetoothLEService extends BluetoothGattCallback implements IEMS
         if (characteristic != null) {
             writeDone = false;
             characteristic.setValue(message);
+            Log.e(TAG, "MESSAGE AS CHAR:" + message);
+            Log.e(TAG, "CHAR:" +  characteristic.toString());
+            Log.e(TAG, "STRING CHAR:" +  characteristic.getStringValue(0));
             mBluetoothGatt.writeCharacteristic(characteristic);
         } else {
             Log.e(TAG, "Missing characteristic on EMS Device.");
