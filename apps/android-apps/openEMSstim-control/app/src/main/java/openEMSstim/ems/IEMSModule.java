@@ -1,5 +1,8 @@
 /**
- * OpenEMSstim
+ * openEMSstim is a mod by Pedro Lopes of the EMSTookit by Max Pfeiffer & Tim Dünte.
+ * code, samples, examples and etc on openEMSstim are at: plopes.org/ems
+ *
+ * ---- original license below -----
  *
  *  Copyright 2016 by Tim Dünte <tim.duente@hci.uni-hannover.de>
  *  Copyright 2016 by Max Pfeiffer <max.pfeiffer@hci.uni-hannover.de>

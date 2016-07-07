@@ -1,5 +1,8 @@
 /**
- * OpenEMSstim
+ * openEMSstim is a mod by Pedro Lopes of the EMSTookit by Max Pfeiffer & Tim Dünte.
+ * code, samples, examples and etc on openEMSstim are at: plopes.org/ems
+ *
+ * ---- original license below -----
  *
  *  Copyright 2016 by Tim Dünte <tim.duente@hci.uni-hannover.de>
  *  Copyright 2016 by Max Pfeiffer <max.pfeiffer@hci.uni-hannover.de>
@@ -101,10 +104,10 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
 
         if (configFile.exists()) {
             try {
+                //check if there is a last saved device, if so update the textfield
                 FileReader reader = new FileReader(configFile);
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 currentDeviceName = bufferedReader.readLine();
-                //auto connect read
                 currentEmsModule.setDeviceName(currentDeviceName);
                 device_name_text_field.setText(currentDeviceName);
                 bufferedReader.close();
@@ -112,9 +115,11 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
                 e.printStackTrace();
             }
         } else {
+            //save the device name
             writeDeviceNameToConfigFile();
         }
 
+        //create UI
         buttonRightOn = (Button) findViewById(R.id.buttonRight);
         buttonLeftOn = (Button) findViewById(R.id.buttonLeft);
 
@@ -135,7 +140,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
         });
 
 
-        //sliders
+        //sliders, needs tweaking
         SeekBar intensityLeft = (SeekBar) findViewById(R.id.seekBarLeft);
         SeekBar intensityRight = (SeekBar) findViewById(R.id.seekBarRight);
 
@@ -194,7 +199,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
 
     }
 
-    private AlertDialog.Builder getNewAlertDialog() {
+    /*private AlertDialog.Builder getNewAlertDialog() {
         AlertDialog.Builder alert;
         //Creation of an AlertDialog
         alert = new AlertDialog.Builder(this);
@@ -207,7 +212,6 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
         input.setText(currentDeviceName);
 
         alert.setView(input);
-
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -227,98 +231,31 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
         });
 
         return alert;
-    }
-
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.open_ems_stim_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        //menu.getItem(1).setTitle("connect to: " + currentDeviceName);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_connect) {
-            currentEmsModule.connect(); //currentEmsModule.get(currentDeviceIndex).connect();
-            return true;
-        }
-        if (id == R.id.action_settings) {
-
-            getNewAlertDialog().show();
-
-        }
-        if (id == R.id.action_disconnect) {
-            currentEmsModule.disconnect(); //currentEmsModule.get(currentDeviceIndex).disconnect();
-        }
-        return super.onOptionsItemSelected(item);
     }*/
-
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (v == buttonRightOn) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                if (currentEmsModule.getPattern(1) == 5) {
-                    //EditText tf = (EditText) findViewById(R.id.emsCommandRight);
-                    //String mes = tf.getText().toString();
-
-                    //Log.i(TAG, "Message send to Device: " + mes);
-                    //if (mes != "" && mes != " ") {
-                    //    currentEmsModule.sendMessageToBoard(mes);
-                    //
-                    //}
-                } else {
-                    currentEmsModule.startCommand(1);
-                }
-
+                currentEmsModule.startCommand(1);
                 buttonRightOn.setBackgroundColor(Color.RED);
+                //Log.i(TAG, "SEND START COMMAND 1");
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                if (currentEmsModule.getPattern(1) == 5) {
-                } else {
-
-                    currentEmsModule.stopCommand(1);
-                }
+                currentEmsModule.stopCommand(1);
                 buttonRightOn.setBackgroundColor(Color.GREEN);
+                //Log.i(TAG, "SEND STOP COMMAND 1");
             }
         } else if (v == buttonLeftOn) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-
-
-                if (currentEmsModule.getPattern(0) == 5) {
-                    //EditText tf = (EditText) findViewById(R.id.emsCommandLeft);
-                    //String mes = tf.getText().toString();
-
-                    //Log.i(TAG, "Message send to Device: " + mes);
-                    //if (mes != "" && mes != " ") {
-                    // currentEmsModule.sendMessageToBoard(mes);
-                    //}
-                } else {
-                    Log.i(TAG, "SEND START COMMAND 0");
-                    currentEmsModule.startCommand(0);
-                }
-
+                currentEmsModule.startCommand(0);
                 buttonLeftOn.setBackgroundColor(Color.RED);
+                //Log.i(TAG, "SEND START COMMAND 0");
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                if (currentEmsModule.getPattern(0) == 5) {
-                } else {
-                    Log.i(TAG, "SEND STOP COMMAND 0");
-                    currentEmsModule.stopCommand(0);
-                }
+                currentEmsModule.stopCommand(0);
                 buttonLeftOn.setBackgroundColor(Color.GREEN);
+                //Log.i(TAG, "SEND STOP COMMAND 0");
             }
-
         }
-
         v.performClick();
         return false;
     }
@@ -328,7 +265,6 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
         this.runOnUiThread(new Runnable() {
                                @Override
                                public void run() {
-
                                    if (currentEmsModule.isConnected()) {
                                        buttonLeftOn.setEnabled(true);
                                        buttonLeftOn.setBackgroundColor(Color.GREEN);
