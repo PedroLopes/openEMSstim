@@ -193,10 +193,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
     public boolean onTouch(View v, MotionEvent event) {
         if (v == buttonRightOn) {
 
-            currentEmsModule.tester();
-
-
-            /*if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 currentEmsModule.startCommand(1);
                 buttonRightOn.setBackgroundColor(Color.RED);
                 //Log.i(TAG, "SEND START COMMAND 1");
@@ -215,7 +212,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
                 buttonLeftOn.setBackgroundColor(Color.GREEN);
                 //Log.i(TAG, "SEND STOP COMMAND 0");
             }
-        */}
+        }
         v.performClick();
         return false;
     }

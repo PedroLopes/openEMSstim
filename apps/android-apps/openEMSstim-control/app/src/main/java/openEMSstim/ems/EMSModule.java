@@ -54,12 +54,6 @@ public class EMSModule implements IEMSModule {
     }
 
     @Override
-    public void tester() {
-        bleConnector.sendMessageToEMSDevice("C" + "0" + "I0T0G");
-        Log.w(TAG, "TESTER SENT: " + "C" + "0" + "I0T0G");
-    }
-
-    @Override
     public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
         if (bleConnector.isConnected()) {
