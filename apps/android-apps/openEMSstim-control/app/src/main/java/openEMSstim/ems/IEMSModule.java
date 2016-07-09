@@ -30,8 +30,6 @@ public interface IEMSModule {
 
     public void stopCommand(int channel);
 
-    public void tester();
-
     public void startCommand(int channel);
 
     public void setIntensityOnChannelForTime(int intensity, int channel, long time);
