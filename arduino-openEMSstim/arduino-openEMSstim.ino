@@ -17,7 +17,7 @@
 #include "avr/pgmspace.h"
 
 //BT: the string below is how your EMS module will show up for other BLE devices
-#define EMS_BLUETOOTH_ID "openEMSstim1"
+#define EMS_BLUETOOTH_ID "openEMS1"
 
 //DEBUG: setup for verbose mode (prints debug messages if DEBUG_ON is 1)
 #define DEBUG_ON 1
@@ -26,7 +26,7 @@
 #define USB_FULL_COMMANDS_ACTIVE 1 
 
 //USB: allows to send simplified test commands (one char each, refer to https://github.com/PedroLopes/openEMSstim) to the board via USB (by default this is inactive)
-#define USB_TEST_COMMANDS_ACTIVE 1
+#define USB_TEST_COMMANDS_ACTIVE 0
 
 //helper print function that handles the DEBUG_ON flag automatically
 void printer(String msg, boolean force = false) {
@@ -46,6 +46,7 @@ EMSSystem emsSystem(2);
 void setup() {
 	Serial.begin(19200);
 	softSerial.setTimeout(100);
+	Serial.setTimeout(50);
 	printer("\nSETUP:");
 	Serial.flush();
 
@@ -80,6 +81,7 @@ void loop() {
 		message.trim();
                 printer("\tBT: received command: " + String(message));
 		processMessage(message);
+                softSerial.flush(); //never tested
 	}
 
 	//Checks whether a signal has to be stoped
@@ -90,7 +92,7 @@ void loop() {
 	//Communicate to the EMS-module over USB
         if (Serial.available() > 0) {
            if (USB_FULL_COMMANDS_ACTIVE) {
-             String message = softSerial.readStringUntil('\n');
+             String message = Serial.readStringUntil('\n');
              printer("\tUSB: received command: " + String(message));
              message.trim();   
 	     processMessage(message);
@@ -99,6 +101,7 @@ void loop() {
              printer("\tUSB-TEST-MODE: received command: " + char(c));
 	     doCommand(c);
 	   }
+          Serial.flush(); 
 	}
 }
 
@@ -135,34 +138,35 @@ const char* const string_table_outputs[] PROGMEM = {ems_channel_1_active, ems_ch
 char buffer[32];
 
 
-//process a serial message (according to protocol, check:
+//process a command message (according to protocol, check https://bitbucket.org/MaxPfeiffer/letyourbodymove/)
 void processMessage(String message) {
-  printer("\tBT: received message: " + String(message));
-  Serial.flush(); //was on DEBUG, I think it should be all the time
-  //Converting
   if (message.charAt(0) == 'W' && message.charAt(1) == 'V') {
     int lastIndexOfComma = message.lastIndexOf(',');
     hexCommandString = message.substring(lastIndexOfComma + 1,
     message.length() - 1);
     command = "";
-    printer("\tEMS_CMD: Message length: ");
+    printer("\tEMS_CMD: HEX command length: ");
     printer(String(hexCommandString.length()));
     printer(hexCommandString);
-    Serial.flush(); //was on DEBUG, I think it should be all the time
     for (unsigned int i = 0; i < hexCommandString.length(); i = i + 2) {
       char nextChar = convertToHexCharsToOneByte(hexCommandString.charAt(i),hexCommandString.charAt(i + 1));
       command = command + nextChar;
     }
-    printer("\tEMS_CMD: Converted command: ");
+    printer("\tEMS_CMD: Converted HEX command: ");
     printer(command);
-    Serial.flush(); 
     emsSystem.doCommand(&command);
   } else if (message.equals(BTLE_DISCONNECT)) {
     printer("\tBT: Disconnected");
-    Serial.flush(); //was on DEBUG, I think it should be all the time
     emsSystem.shutDown();
   }
+  else {
+    printer("\tCommand NON HEX:");
+    printer(message);
+    emsSystem.doCommand(&message);
+    //printer("\tERROR: HEX Command Unknown");
+  }
 }
+
 
 
 //For testing
