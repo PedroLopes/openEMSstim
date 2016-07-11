@@ -1,44 +1,80 @@
-# This program enables you to test the openEMSstim board quickly via USB
-# To use it you will need to adjust the COM_port to whatever your operating system reported for the arduino connection (Windows will be something like COM3, check on Device Manager, while unix will be /dev/tty.usbsomething)
-# You can change the send mode, likely you want to keep it as is (STRING)
+# This program enables to send commands via USB to the openEMSstim board
+# NOTE: To use it you will need to adjust the COM_port to whatever your operating system reported for the arduino connection (Windows will be something like COM3, check on Device Manager, while unix will be /dev/tty.usbsomething)
 
 from time import sleep
 import serial
 
-def enum(**enums):
-        return type('Enum', (), enums)
-modes = enum(HEX=1, STRING=2)
-
 #setup the connection and its parameters (you can change this below)
 COM_port = '/dev/tty.wchusbserial1410'
 baud_rate = 19200
-send_mode = modes.STRING #available modes are: HEX (like BTLE does it internally) or STRING (easier to implement over USB connection)
 
 #open the connection
 ser = serial.Serial(COM_port, baud_rate) 
-print("Will wait for the board to setup")
-sleep(10)
-print("wait completed")
+
+# wait for n seconds
+sleep_wait = 10
+print("Waiting " + str(sleep_wait) + " seconds for the board to setup...\n")
+sleep(sleep_wait)
+print("Ready.\n")
 notStopped = True
 while notStopped:
-    channel = raw_input("Test by sending a message to channel 1 or 2, choose by typing \"1\" or \"2\" (q to quit)")
-    if channel.isdigit():
-        channel_number = int(channel)
-        if (channel_number == 1):
-            if (send_mode == modes.HEX):
-                print("sending HEX message to " + str(channel))
-                ser.write(str("WV,0018,433049313030543130303047."))
-            else: 
-                print("sending STRING message to " + str(channel))
-                ser.write(str("C0I100T1000G"))
-        elif (channel_number == 2):
-            if (send_mode == modes.HEX):
-                print("sending HEX message to " + str(channel))
-                ser.write(str("WV,0018,433149313030543130303047."))
-            else: 
-                print("sending STRING message to " + str(channel))
-                ser.write(str("C1I100T1000G"))
-        else:
-            print("Malformatted input at " + str(channel))
-    elif str(channel) == "q":
-        notStopped = False
+    channel = ""
+    intensity = ""
+    duration = "1000"
+
+    # read from user input
+    command = raw_input("> Format your command like: channel (0-1) intensity(0-100) timeout(optional) [q to quit]")
+    
+    # parse command
+    tokenized = command.split(" ")
+    
+    # test if number of arguments is correct (2 or 3)
+    if len(tokenized) < 2 or len(tokenized) > 3:
+        print("ERROR: Format your command like: channel (0-1) intensity(0-100) timeout(optional) [q to quit]")
+        continue
+    
+    # parse channel
+    channel = tokenized[0]
+    print("channel: " + str(channel))
+    if str(channel) == "q":
+        notStopped = Falsei
+        print("USER: quited")
+        continue
+    else:
+        # parse intensity
+        intensity = tokenized[1]
+        print("intensity: " + str(intensity))
+        
+        # get duration from user input if present
+        if len(tokenized) == 3:
+            duration = tokenized[2]
+            print("duration: " + str(duration))
+
+        # check channel input validity
+        if channel.isdigit():
+            channel_number = int(channel)
+            command = ""
+            if channel_number == 1 or channel_number == 2:
+                command += str("C" + str(channel_number-1))
+            else:
+                print("Malformatted input at channel number:" + str(channel))
+                continue
+            
+            # check intensity input validity
+            if intensity.isdigit():
+                intensity_number = int(intensity)
+            if intensity_number >= 0 and intensity_number <= 100:
+                command += str("I"+ intensity)
+            else:
+                print("Malformatted input at intensity number:" + str(intensity))
+                continue
+            
+            # check duration input validity
+            if duration.isdigit():
+                if int(duration) >= 0:
+                    command += str("T"+ duration + "G")
+                else:
+                    print("Malformatted input at duration number:" + str(duration))
+                    continue
+            print("CMD="+str(command))
+            ser.write(str(command))
