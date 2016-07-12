@@ -1,7 +1,7 @@
 var serialport = require('serialport');// include the library
    SerialPort = serialport.SerialPort; // make a local instance of it
    // get port name from the command line:
-   portName = process.argv[2];
+   portName = "/dev/tty.wchusbserial1410";
 
 var openEMSstim = new SerialPort(portName, {
    baudRate: 19200,
