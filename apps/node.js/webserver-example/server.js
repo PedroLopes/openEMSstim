@@ -16,6 +16,7 @@ app.post('/ems',function(req,res){
   var channel=req.body.channel;
   var intensity=req.body.intensity;
   var duration=req.body.duration;
+  if (!duration) duration = 1000;
   console.log("From Client POST request: channel = "+ channel +", intensity = " + intensity + " duration = " + duration);
   send_command(channel,intensity,duration);
   res.end("yes");
