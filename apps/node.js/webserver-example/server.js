@@ -9,7 +9,7 @@ var serialport = require('serialport');// include the library
 
 
 app.get('/',function(req,res){
-  res.sendFile("index.html");
+  res.sendfile("index.html");
 });
 
 app.post('/ems',function(req,res){
@@ -82,6 +82,6 @@ function send_command(channel, intensity, duration) {
 
 
 function is_numeric(str){
-if (!isNaN(parseInt(str, 10))) return true;
-else return false;
+	if (!isNaN(parseInt(str, 10))) return true;
+	else return false;
 }
