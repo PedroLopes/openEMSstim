@@ -2,9 +2,17 @@
     Based on: https://gist.github.com/xjcl/8ce64008710128f3a076
     Modified by PedroLopes for openEMSstim but credit remains with author
 
+    HOW TO SETUP:
+    1. Connect the openEMSstim via USB to your laptop
+    2. Setup the serial_port variable (e.g., serial_port = "/dev/tty.wchusbserial1410")
+    3. Connect Player 1 to EMS Channel 1 and Player 2 to EMS Channel 2
+    4. Calibrate openEMSstim (read plopes.org/ems to learn how to safely execute this)
+    5. Start the python game: >python ems-pong.py
+
     HOW TO PLAY:
-    Play a simple game of pong in a window.
-    Player 0 controls: (W, S)  Player 1 controls: (O, L). Quit: (Q)
+    Player 0 controls: UP (W) DOWN (S)  
+    Player 1 controls: UP (O) DOWN (L). 
+    Quit: (Q)
     
     HOW TO INSTALL:
     Requires: pyglet, openEMSstim python lib (openems) 
@@ -20,6 +28,8 @@ import sys
 sys.path.append("../")
 from pyEMS import openEMSstim
 from pyEMS.EMSCommand import ems_command
+
+serial_port = "/dev/tty.wchusbserial1410"
 
 class Ball(object):
 
@@ -69,7 +79,7 @@ class Model(object):
         # STATE VARS
         self.paused = False
         self.i = 0  # "frame count" for debug
-        self.ems_device = openEMSstim.openEMSstim("/dev/tty.wchusbserial1410",19200)
+        self.ems_device = openEMSstim.openEMSstim(serial_port,19200)
         self.left_player_lost_stimulation = ems_command(1,100,2000)
         self.right_player_lost_stimulation = ems_command(2,100,2000)
 
