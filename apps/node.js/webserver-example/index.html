@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>openEMSstim</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+	      var channel, intensity, duration;
+        $("#submit").click(function(){
+          channel=$("#channel").val();
+          intensity=$("#intensity").val();
+          duration=$("duration").val();
+          $.post("http://localhost:3000/ems",{channel: channel,intensity: intensity, duration: duration}, function(data){
+            if(data==='done')
+              {
+                alert("EMS command sent");
+              }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>openEMSstim</h1>
+    <input type="TEXT" id="channel" size="40"><br>
+    <input type="TEXT" id="intensity" size="40"><br>
+    <input type="TEXT" id="duration" size="40"><br>
+    <input type="button" id="submit" value="Submit">
+  </body>
+</html>
