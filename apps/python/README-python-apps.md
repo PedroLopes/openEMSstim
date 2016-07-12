@@ -18,7 +18,7 @@ This is a collection of python examples of how to interface with openEMSstim (vi
 
 ## More info about pong-in-python game
 
-
+![How to connect your board](extra/images/python-apps/ems-pong.png)
 
 ### License and Liability
 
