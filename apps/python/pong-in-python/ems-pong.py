@@ -10,10 +10,16 @@
     Requires: pyglet, openEMSstim python lib (openems) 
     and a 10x10 image in directory: "white_square.png"
 """
+#native imports
 import math
 import random
 import pyglet
-import openems
+import sys
+
+#import openEMSstim modules
+sys.path.append("../")
+from pyEMS import openEMSstim
+from pyEMS.EMSCommand import ems_command
 
 class Ball(object):
 
@@ -57,12 +63,15 @@ class Model(object):
         # DATA
         self.pressed_keys = set()  # set has no duplicates
         self.quit_key = pyglet.window.key.Q
-        self.speed = 20  # in pixels per frame
+        self.speed = 6  # in pixels per frame
         self.ball_speed = self.speed * 2.5
         self.WIDTH, self.HEIGHT = DIMENSIONS
         # STATE VARS
         self.paused = False
         self.i = 0  # "frame count" for debug
+        self.ems_device = openEMSstim.openEMSstim("/dev/tty.wchusbserial1410",19200)
+        self.left_player_lost_stimulation = ems_command(1,100,2000)
+        self.right_player_lost_stimulation = ems_command(2,100,2000)
 
     def reset_ball(self, who_scored):
         """Place the ball anew on the loser's side."""
@@ -102,8 +111,10 @@ class Model(object):
         b = self.ball
         if b.x + b.TO_SIDE < 0:  # leave on left
             self.reset_ball(1)
+            self.ems_device.send(self.left_player_lost_stimulation)
         elif b.x - b.TO_SIDE > self.WIDTH:  # leave on right
             self.reset_ball(0)
+            self.ems_device.send(self.right_player_lost_stimulation)
 
     def check_if_paddled(self):
         """Called by update_ball to recalc. a ball hit with a player paddle."""

@@ -10,16 +10,15 @@ This is a collection of python examples of how to interface with openEMSstim (vi
 4. more-detailed-python-examples: has some extra things you might want to explore
 5. tests: run ``python test_openems_module.py`` to check if your python module works
 	
+## How to run the python apps
 
-## I dont want to build the code... where do I find the pre-build/apk/binary apps?
-No worries, the pre-build/binary apps are here too. Navigate into each app folder and you will find a file called "appname".apk, this is a android binary. You can simply copy it to your phone (even email it to yourself) and tap on it to install it (will invoke the android installer). Note you have to disable "install from trusted sources only" on your preferences (also know as "Developer Options" on the android preferences). 
+1. Make sure you have python installed
+2. Install our dependency by doing: pip -r requirements.txt
+3. Run an app by typing ``python nameofapp.py`` (do not forget to configure serial port)
 
-## How to mod any python app to do what I want?
+## More info about pong-in-python game
 
-1. Make sure you have python
-2. Install any dependency by doing: pip -r requirements.txt
-3. Copy paste an app, give it a new name and start working
-4. To access the openEMSstim you can use the pyEMS module, which abstracts everything for you.
+
 
 ### License and Liability
 
