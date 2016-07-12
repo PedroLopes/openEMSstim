@@ -1,3 +1,6 @@
+#More node
+apps/node.js/.bin/
+
 # Arduino ignores
 app/bin/
 app/pde.jar
