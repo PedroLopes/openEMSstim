@@ -11,7 +11,9 @@ To interface through a web server we recommend creating a nodejs server (optiona
 	2. ``npm install express`` (for the web server side)
 	3. ``npm install body-parser`` (for the web server side)
 3. run your example on the command line by typing: ``nodejs nameofapp.js``
-4. (if you are running a web server) open http://localhost:3000 on your browser
+4. (if you are running a web server) open http://localhost:3000 on your browser. You will see:
+![nodejsapp](../../extra/images/nodejs/nodejsapp.png)
+
 
 ### License and Liability
 
