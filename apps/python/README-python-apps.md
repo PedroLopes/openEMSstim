@@ -18,7 +18,7 @@ This is a collection of python examples of how to interface with openEMSstim (vi
 
 ## More info about pong-in-python game
 
-The game is simple: everytime a player looses a point (like in the image below, player left is about to loose a point) that player gets 2 seconds of EMS stimulation. 
+The game is simple: every time a player looses a point (like in the image below, player left is about to loose a point) that player gets 2 seconds of EMS stimulation. 
 
 ![EMS PONG](../../extra/images/python-apps/ems-pong.png)
 
@@ -27,7 +27,7 @@ In order to alter the game, change the parameters:
 1. ``self.left_player_lost_stimulation = ems_command(1,100,2000)`` [line 73]
 2. ``self.right_player_lost_stimulation = ems_command(2,100,2000)``[line 74]
 
-Or found more iteresting places of the game to trigger EMS commands, maybe to counter the players' input (if you hit the keys to move… EMS prevents you from doing so!).
+Or found more interesting places of the game to trigger EMS commands, maybe to counter the players' input (if you hit the keys to move… EMS prevents you from doing so!).
 
 
 ### License and Liability
