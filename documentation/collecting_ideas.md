@@ -7,6 +7,24 @@
 4. Add a LiPo battery and a charging circuit
 5. Change the connectors
 
+### Next version of the protocol (future)
+
+Right now, the protocol is the same as on the board by the original authors. We plan to simplify it soon. The plan is:
+
+1. command generation is handled by a function, never by raw text
+2. there will be no time expiration for a command
+3. commands will be shorter, here's a preview (work in progress):
+
+| Command       | Values   | Sample  	| Description | Lenght (bits) | 
+| ------------- |:--------:| ---------:|------------:|------------:|
+| Channel 		|0-1		|0  		|Set channel 0 or 1| 1 | 
+| Intensity		|0-100 		|100		|Set intensity in steps of digipot | ? |  
+| Ack needed?   |0-1 (N/Y) 	|0			|Writes back via the BT channel an ACK| 1 |
+| Checksum	    |       	|0			|(Checksum of Channel + Intensity + Ack Needed) modulus 8| ? |  
+
+**Why: ** Overall this simplifies the protocol, and generates a smaller payload too. The programmer must keep an eye for commands arriving/etc. Because the time-expiration will not be per command, it can be added to the device directly or on top by adding a "keep alive" protocol. 
+
+
 ## Documentation
 1. Make an instructables page
 
