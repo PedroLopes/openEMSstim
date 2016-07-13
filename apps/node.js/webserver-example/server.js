@@ -51,6 +51,7 @@ function showError(error) {
 	   console.log('Serial port error: ' + error);
 }
 
+//First validates a command, then if valid, sends it to the openEMSstim
 function send_command(channel, intensity, duration) {
 	var command = ""
 	if (is_numeric(channel) && is_numeric(intensity) && is_numeric(duration)) {
