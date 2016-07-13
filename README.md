@@ -21,6 +21,17 @@ The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the awesome [EMS toolki
 * Please pair this board only with medically compliant EMS devices (check regulation in your country) and verify that you plug it in the INPUT port marked in the board. The OUTPUT port is connected to the electrode pads. 
 * Please use EMS electrodes (wet, pre-gelled and aproved electrodes). 
 
+## Supported platforms & APIs
+
+openEMSstim can be interfaced on virtually anything as long as it has bluetooth (BT LE) or serial (USB). Here's the languages and libraries for which we have created examples and support code:
+
+![How to connect your board](extra/images/other-logos/android.png)
+![How to connect your board](extra/images/other-logos/unity.png)
+![How to connect your board](extra/images/other-logos/python.png)
+![How to connect your board](extra/images/other-logos/node.js.png)
+![How to connect your board](extra/images/other-logos/processing.png)
+
+
 ### Copyright for this repo's software, casings & hardware
 * Copyright 2016 by Pedro Lopes <plopesresearch@gmail.com> (Software, Cases, Hardware Remix)
 * Copyright 2016 by Doga Yuksel <dogayuksel@gmail.com> (Cases)
