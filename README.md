@@ -23,7 +23,7 @@ The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the awesome [EMS toolki
 
 ## Supported platforms & APIs
 
-openEMSstim can be interfaced on virtually anything as long as it has bluetooth (BT LE) or serial (USB). Here are the languages and libraries for which we have created examples and support code:
+openEMSstim can be interfaced on virtually anything as long as the device features bluetooth (BT LE) or serial (USB). Here are the languages and libraries for which we have created examples and tested the code:
 
 ![How to connect your board](extra/images/other-logos/android.png)
 ![How to connect your board](extra/images/other-logos/unity.png)
@@ -32,11 +32,11 @@ openEMSstim can be interfaced on virtually anything as long as it has bluetooth 
 ![How to connect your board](extra/images/other-logos/processing.png)
 
 
-### Copyright for this repo's software, casings & hardware
+### Authors of this repo's software, casings & hardware
 * Copyright 2016 by Pedro Lopes <plopesresearch@gmail.com> (Software, Cases, Hardware Remix)
 * Copyright 2016 by Doğa Yüksel <dogayuksel@gmail.com> (Cases)
 
-### Copyright from the original board design (EMS Toolkit)
+### Authors from the original board design (EMS Toolkit)
 * Copyright 2016 by Tim Dünte <tim.duente@hci.uni-hannover.de>
 * Copyright 2016 by Max Pfeiffer <max.pfeiffer@hci.uni-hannover.de>
 
