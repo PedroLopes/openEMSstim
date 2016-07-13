@@ -12,11 +12,11 @@ All the necessary information for getting started is compiled in a step-by-step 
 
 ## Why this project?
 
-The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the awesome [EMS toolkit](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home). See the License which acknowledges all the work from the original makers. This project is forked to (1) provide a simpler design with a few changes, (2) preserve the original design and credit without pulling all the changes to it and (3) be used in the [UIST Student Innovation Contest 2016](https://uist.acm.org/uist2016/contest) without needing to change the instructions of the original project which is meant for HCI researchers and not for a UIST student audience. 	
+The openEMSstim is a mod by [Pedro Lopes](http://plopes.org) of the awesome [EMS toolkit](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home). See the License which acknowledges all the work from the original makers. This project is forked to (1) provide a simpler design with a few changes, (2) preserve the original design and credit without pulling all the changes to it and (3) be used in the [UIST Student Innovation Contest 2016](https://uist.acm.org/uist2016/contest) without needing to change the instructions of the original project which is meant for HCI researchers and not for a UIST student audience. 	
 ## Read before using
 * Read the [LICENSE](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home/License)
 * Make sure you follow the safety instructions before using it and you are familiar with all the procedure of how to apply EMS safely.
-* If you are not familiar with EMS: [start here (slides,papers,examples)](chi16.plopes.org)
+* If you are not familiar with EMS: [start here (slides,papers,examples)](https://www.dropbox.com/s/rg6vpg9fhgn91fe/CHI_Course_Slides_2016PedroLopes_MaxPffeifer.pptx)
 * Please note that this board does not generate any EMS signal, it is a amplifier that can only reduce the power of the signal you input to it. You need a EMS signal generator too, this will be your input. For your safety, use only: an off-the-shelve, un-modded, original, regulation-approved, medically compliant device. 
 * Please pair this board only with medically compliant EMS devices (check regulation in your country) and verify that you plug it in the INPUT port marked in the board. The OUTPUT port is connected to the electrode pads. 
 * Please use EMS electrodes (wet, pre-gelled and approved electrodes). 

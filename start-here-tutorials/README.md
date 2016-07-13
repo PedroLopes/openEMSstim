@@ -4,11 +4,11 @@ Here's the summary of all our material on EMS and using openEMSstim board. You c
 
 ## 1. video tutorials
 
-![How to connect your board](../extra/images/youtube/tutorial-openEMSstim.png)
+![openEMSstim tutorial](../extra/images/youtube/tutorial-openEMSstim.png)
 
 Click [here to watch this tutorial](https://www.youtube.com/watch?v=QSn7W4r4Tbw) on how to step the openEMSstim via Android.
 
-![How to connect your board](../extra/images/youtube/tutorial-EMSbasics.png)
+![basics of ems tutorial](../extra/images/youtube/tutorial-EMSbasics.png)
 
 Click [here to watch this tutorial](https://www.youtube.com/watch?v=6VHgRX0lVJs) on the basics of EMS. 
 
