@@ -44,6 +44,12 @@ openEMSstim can be interfaced on virtually anything as long as the device featur
 Licensed under "The MIT License (MIT) – military use of this product is forbidden – V 0.2" by the makers Max Pfeiffer & Tim Dünte, all original designs fully credited to the makers. 
 Some rights reserved. See [LICENSE](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home/License>)
 
+### Sponsors
+
+![HPI](extra/images/hpi-logo/hpi.png)
+
+The openEMSstim software and the hardware for the ACM UIST Student Innovation Contest 2016 was kindly sponsored by the [Hasso Plattner Institute](http://hpi.de/en.html).
+
 ### Liability
 
 Please refer to the liability waiver (in documentation/liability_waiver.md).

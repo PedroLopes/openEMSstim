@@ -4,19 +4,19 @@
 
 openEMSstim can be interfaced on virtually anything as long as it has bluetooth (Low Energy) or serial (USB). Here are the languages and libraries for which we have created examples and support code (navigate to each folder to find the examples):
 
-![How to connect your board](extra/images/other-logos/android.png)
+![android](../extra/images/other-logos/android.png)
 (via bluetooth low energy)
 
-![How to connect your board](extra/images/other-logos/unity.png)
+![unity](../extra/images/other-logos/unity.png)
 (via bluetooth low energy on Unity for Android, or via USB serial)
 
-![How to connect your board](extra/images/other-logos/python.png)
+![python](../extra/images/other-logos/python.png)
 (via USB serial)
 
-![How to connect your board](extra/images/other-logos/node.js.png)
+![nodejs](../extra/images/other-logos/node.js.png)
 (via USB serial)
 
-![How to connect your board](extra/images/other-logos/processing.png)
+![processing](../extra/images/other-logos/processing.png)
 (via bluetooth low energy on Processing Android Mode, or via USB serial)
 
 ### Liability
