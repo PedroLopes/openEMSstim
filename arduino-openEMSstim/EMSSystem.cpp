@@ -41,7 +41,6 @@ void EMSSystem::addChannelToSystem(EMSChannel *emsChannel) {
 // get the next number out of a String object and return it
 int EMSSystem::getNextNumberOfSting(String *command, int startIndex) {
 	int number = -1;
-
 	int endIndex = -1;
 
 	// Select the number in the string
@@ -62,8 +61,7 @@ int EMSSystem::getNextNumberOfSting(String *command, int startIndex) {
 			number = (int) temS.toInt();
 
 		} else {
-			Serial.println(
-					"not in if ERROR: endIndex>startIndex && endIndex>=0 &&  startIndex>=0");
+			Serial.println("not in if ERROR: endIndex>startIndex && endIndex>=0 &&  startIndex>=0");
 		}
 	}
 	return number;
@@ -73,19 +71,19 @@ void EMSSystem::doActionCommand(String *command) {
 
 	if (command->length() != 0) {
 		// Channel
-		int seperatorChannel = command->indexOf(CHANNEL);
+		int separatorChannel = command->indexOf(CHANNEL);
 		int currentChannel = -1;
 
-		if (seperatorChannel != -1) {
+		if (separatorChannel != -1) {
 
-			currentChannel = getNextNumberOfSting(command, seperatorChannel);
+			currentChannel = getNextNumberOfSting(command, separatorChannel);
 		}
 
 		// Signal length onTime
-		int seperatorSignalLength = command->indexOf(TIME);
+		int separatorSignalLength = command->indexOf(TIME);
 		int signalLength = -1;
-		if (seperatorSignalLength != -1) {
-			signalLength = getNextNumberOfSting(command, seperatorSignalLength);
+		if (separatorSignalLength != -1) {
+			signalLength = getNextNumberOfSting(command, separatorSignalLength);
 			if (signalLength > 5000) {
 				//signaleLength max 5000ms
 				signalLength = 5000;
@@ -94,11 +92,11 @@ void EMSSystem::doActionCommand(String *command) {
 		}
 
 		// Signal Intensity
-		int seperatorSignalIntensity = command->indexOf(INTENSITY);
+		int separatorSignalIntensity = command->indexOf(INTENSITY);
 		int signalIntensity = -1;
-		if (seperatorSignalIntensity != -1) {
+		if (separatorSignalIntensity != -1) {
 			signalIntensity = getNextNumberOfSting(command,
-					seperatorSignalIntensity);
+					separatorSignalIntensity);
 			emsChannels[currentChannel]->setIntensity(signalIntensity - 1);
 		}
 
@@ -113,13 +111,10 @@ void EMSSystem::doActionCommand(String *command) {
 			emsChannels[currentChannel]->activate();
 			emsChannels[currentChannel]->applySignal();
 		} else {
-			//deactivate all channels if channelNumber is wrong
-			shutDown();
+			Serial.print("EMSSystem.cpp: ERROR: Command on wrong channel");
 		}
-
 	} else {
-
-		Serial.print("Command = null!!!:");
+		Serial.print("EMSSystem.cpp: ERROR: Command was null");
 	}
 
 }
@@ -163,13 +158,13 @@ void EMSSystem::setOption(String *option) {
 bool EMSSystem::getChannelAndValue(String *option, int *channel, int *value) {
 	int left = option->indexOf('[');
 	int right = option->lastIndexOf(']');
-	int seperator = option->indexOf(',', left + 1);
+	int separator = option->indexOf(',', left + 1);
 
-	if (left < seperator && seperator < right && left != -1 && right != -1
-			&& seperator != -1) {
-		String help = option->substring(left + 1, seperator);
+	if (left < separator && separator < right && left != -1 && right != -1
+			&& separator != -1) {
+		String help = option->substring(left + 1, separator);
 		(*channel) = help.toInt();
-		help = option->substring(seperator + 1, right);
+		help = option->substring(separator + 1, right);
 		(*value) = help.toInt();
 
 		//Parsing successful
@@ -199,7 +194,7 @@ void EMSSystem::doCommand(String *command) {
 		} else if (command->charAt(0) == OPTION) {
 			setOption(command);
 		} else {
-			Serial.print("Unknown command: ");
+			Serial.print("EMSSystem.cpp: ERROR: Unknown command: ");
 			Serial.println((*command));
 			Serial.flush();
 		}
