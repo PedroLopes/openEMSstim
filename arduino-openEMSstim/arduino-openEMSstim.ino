@@ -6,7 +6,6 @@
  */ 
 
 // Necessary files (AltSoftSerial.h, AD5252.h, Rn4020BTLe.h, EMSSystem.h, EMSChannel.h) and dependencies (Wire.h, Arduino.h)
-//#include "Arduino_Software.h"
 #include "Arduino.h"
 #include "AltSoftSerial.h"
 #include "Wire.h"
@@ -76,32 +75,28 @@ const String BTLE_DISCONNECT = "Connection End";
 
 void loop() {
 
+	//Communicate to the EMS-module over Bluetooth Low Energy
 	if (softSerial.available() > 0) {
 		String message = softSerial.readStringUntil('\n');
 		message.trim();
                 printer("\tBT: received command: " + String(message));
 		processMessage(message);
-                softSerial.flush(); //never tested
-	}
-
-	//Checks whether a signal has to be stoped
-	if (emsSystem.check() > 0) {
-
+                softSerial.flush();
 	}
 
 	//Communicate to the EMS-module over USB
         if (Serial.available() > 0) {
-           if (USB_FULL_COMMANDS_ACTIVE) {
-             String message = Serial.readStringUntil('\n');
-             printer("\tUSB: received command: " + String(message));
-             message.trim();   
-	     processMessage(message);
-           } else if (USB_TEST_COMMANDS_ACTIVE) {
-             char c = Serial.read();
-             printer("\tUSB-TEST-MODE: received command: " + char(c));
-	     doCommand(c);
-	   }
-          Serial.flush(); 
+		if (USB_FULL_COMMANDS_ACTIVE) {
+			String message = Serial.readStringUntil('\n');
+             		printer("\tUSB: received command: " + String(message));
+             		message.trim();   
+	    		processMessage(message);
+           	} else if (USB_TEST_COMMANDS_ACTIVE) {
+             		char c = Serial.read();
+             		printer("\tUSB-TEST-MODE: received command: " + char(c));
+	     		testCommand(c);
+	   	}
+          	Serial.flush(); 
 	}
 }
 
@@ -137,81 +132,81 @@ const char* const string_table_outputs[] PROGMEM = {ems_channel_1_active, ems_ch
 
 char buffer[32];
 
-
 //process a command message (according to protocol, check https://bitbucket.org/MaxPfeiffer/letyourbodymove/)
 void processMessage(String message) {
-  if (message.charAt(0) == 'W' && message.charAt(1) == 'V') {
-    int lastIndexOfComma = message.lastIndexOf(',');
-    hexCommandString = message.substring(lastIndexOfComma + 1,
-    message.length() - 1);
-    command = "";
-    printer("\tEMS_CMD: HEX command length: ");
-    printer(String(hexCommandString.length()));
-    printer(hexCommandString);
-    for (unsigned int i = 0; i < hexCommandString.length(); i = i + 2) {
-      char nextChar = convertToHexCharsToOneByte(hexCommandString.charAt(i),hexCommandString.charAt(i + 1));
-      command = command + nextChar;
-    }
-    printer("\tEMS_CMD: Converted HEX command: ");
-    printer(command);
-    emsSystem.doCommand(&command);
-  } else if (message.equals(BTLE_DISCONNECT)) {
-    printer("\tBT: Disconnected");
-    emsSystem.shutDown();
-  }
-  else {
-    printer("\tCommand NON HEX:");
-    printer(message);
-    emsSystem.doCommand(&message);
-    //printer("\tERROR: HEX Command Unknown");
-  }
+	if (message.charAt(0) == 'W' && message.charAt(1) == 'V') {
+		int lastIndexOfComma = message.lastIndexOf(',');
+		hexCommandString = message.substring(lastIndexOfComma + 1,
+		message.length() - 1);
+		command = "";
+		printer("\tEMS_CMD: HEX command length: ");
+		printer(String(hexCommandString.length()));
+		printer(hexCommandString);
+		for (unsigned int i = 0; i < hexCommandString.length(); i = i + 2) {
+  			char nextChar = convertToHexCharsToOneByte(hexCommandString.charAt(i),hexCommandString.charAt(i + 1));
+      			command = command + nextChar;
+    		}
+    		printer("\tEMS_CMD: Converted HEX command: ");
+    		printer(command);
+    		emsSystem.doCommand(&command);
+	} else if (message.equals(BTLE_DISCONNECT)) {
+		printer("\tBT: Disconnected");
+		emsSystem.shutDown();
+	}
+	else {
+		printer("\tEMS_CMD: Command is NON HEX: ");
+		printer(message);
+		emsSystem.doCommand(&message);
+	}
 }
 
-
-
-//For testing
-void doCommand(char c) {
+/**
+*  Test the board directly using commands:
+*  1 - open channel 1 (channel 1 LED will light up)
+*  2 - open channel 2 (channel 2 LED will light up)
+*  q - increase the Digipot wiper on channel 1 (goes up, increment)
+*  a - increase the Digipot wiper on channel 1 (goes down, decrement)
+*  w - increase the Digipot wiper on channel 2 (goes up, increment)
+*  s - decrease the Digipot wiper on channel 2 (goes down, decrement)
+**/
+void testCommand(char c) {
 	if (c == '1') {
 		if (emsChannel1.isActivated()) {
 			emsChannel1.deactivate();
-      strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[1])));
-			printer(buffer); //"\tEMS: Channel 1 inactive"
+			strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[1])));
+			printer(buffer); 
 		} else {
 			emsChannel1.activate();
-      strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[0])));
-			printer(buffer); //"\tEMS: Channel 1 active"
+			strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[0])));
+			printer(buffer); 
 		}
 	} else if (c == '2') {
 		if (emsChannel2.isActivated()) {
 			emsChannel2.deactivate();
-      strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[3])));
-			printer(buffer); //"\tEMS: Channel 2 inactive"
+			strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[3])));
+			printer(buffer); 
 		} else {
 			emsChannel2.activate();
-      strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[2])));
-			printer(buffer);  //"\tEMS: Channel 2 inactive"
+			strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[2])));
+			printer(buffer);  
 		}
 	} else if (c == 'q') {
 		digitalPot.setPosition(1, digitalPot.getPosition(1) + 1);
-    strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[4])));
-		printer(
-				buffer + String(digitalPot.getPosition(1))); //"\tEMS: Intensity Channel 1: "
-	} else if (c == 'w') {
-    strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[4])));
+		strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[4])));
+		printer(buffer + String(digitalPot.getPosition(1))); 
+	} else if (c == 'a') {
+		strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[4])));
 		digitalPot.setPosition(1, digitalPot.getPosition(1) - 1);
-		printer(
-				buffer + String(digitalPot.getPosition(1))); //"\tEMS: Intensity Channel 1: "
-	} else if (c == 'e') {
+		printer(buffer + String(digitalPot.getPosition(1))); 
+	} else if (c == 'w') {
 		//Note that this is channel 3 on Digipot but EMS channel 2
 		digitalPot.setPosition(3, digitalPot.getPosition(3) + 1);
-   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[5])));
-		printer(
-				buffer + String(digitalPot.getPosition(3))); //"\tEMS: Intensity Channel 2: "
-	} else if (c == 'r') {
+		strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[5])));
+		printer(buffer + String(digitalPot.getPosition(3))); 
+	} else if (c == 's') {
 		//Note that this is channel 3 on Digipot but EMS channel 2
 		digitalPot.setPosition(3, digitalPot.getPosition(3) - 1);
-   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[5])));
-		printer(
-				buffer + String(digitalPot.getPosition(3))); //"\tEMS: Intensity Channel 2: "
+		strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[5])));
+		printer(buffer + String(digitalPot.getPosition(3))); 
 	}
 }
