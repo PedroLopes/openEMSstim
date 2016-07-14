@@ -49,6 +49,9 @@ void setup() {
 	printer("\nSETUP:");
 	Serial.flush();
 
+	// read from EEPROM if setup if comes from powerup, if so, do 
+	// the bluetooth setup, if not does not? also add this as a flag.  
+
 	//Reset and Initialize the Bluetooth module
 	printer("\tBT: RESETTING");
 	bluetoothModule.reset();
