@@ -37,6 +37,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 import android.widget.Switch;
 import android.widget.CompoundButton;
+import android.view.View.OnFocusChangeListener;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -54,12 +55,13 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
     private Button buttonRightOn;
     private Button buttonLeftOn;
     private String greyColor = "#ffeaf6ff";
+    private String blueColor = "#BBDEFB";
 
     private String configFileName = "openEMSstim_configuration.txt";
     private File configFile;
 
     private IEMSModule currentEmsModule;
-    private String currentDeviceName = "";
+    private String currentDeviceName = "openEMS2";
     private EditText device_name_text_field;
 
     private void writeDeviceNameToConfigFile() {
@@ -94,10 +96,12 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
 
         if (configFile.exists()) {
             try {
+                Log.i("CONFIG:","File exists");
                 //check if there is a last saved device, if so update the textfield
                 FileReader reader = new FileReader(configFile);
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 currentDeviceName = bufferedReader.readLine();
+                Log.i("CONFIG:","Current device name exists" + currentDeviceName);
                 currentEmsModule.setDeviceName(currentDeviceName);
                 device_name_text_field.setText(currentDeviceName);
                 bufferedReader.close();
@@ -113,6 +117,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
         buttonRightOn = (Button) findViewById(R.id.buttonRight);
         buttonLeftOn = (Button) findViewById(R.id.buttonLeft);
 
+
         buttonRightOn.setOnTouchListener(this);
         buttonLeftOn.setOnTouchListener(this);
 
@@ -122,8 +127,10 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     currentEmsModule.setDeviceName(device_name_text_field.getText().toString());
+                    currentDeviceName = device_name_text_field.getText().toString();
                     currentEmsModule.connect();
-                    } else {
+                    writeDeviceNameToConfigFile();
+                } else {
                     currentEmsModule.disconnect();
                 }
             }
@@ -133,6 +140,9 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
         //sliders, needs tweaking
         SeekBar intensityLeft = (SeekBar) findViewById(R.id.seekBarLeft);
         SeekBar intensityRight = (SeekBar) findViewById(R.id.seekBarRight);
+
+        buttonLeftOn.setText("Channel 1\n (at " + "100" + "% power)");
+        buttonRightOn.setText("Channel 2\n (at " + "100" + "% power)");
 
         intensityLeft.setLeft(0);
         intensityLeft.setRight(100);
@@ -149,6 +159,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
                 // Change intensity of channel 0
                 currentEmsModule.setMAX_INTENSITY(progress, channel);
                 currentEmsModule.setIntensity(progress, channel);
+                buttonLeftOn.setText("Channel 1\n (at " + progress + "% power)");
 
             }
 
@@ -172,6 +183,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
                 //Change intensity of channel 1
                 currentEmsModule.setMAX_INTENSITY(progress, channel);
                 currentEmsModule.setIntensity(progress, channel);
+                buttonRightOn.setText("Channel 2\n (at " + progress + "% power)");
 
             }
 
@@ -199,7 +211,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
                 //Log.i(TAG, "SEND START COMMAND 1");
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
                 currentEmsModule.stopCommand(1);
-                buttonRightOn.setBackgroundColor(Color.GREEN);
+                buttonRightOn.setBackgroundColor(Color.parseColor(blueColor));
                 //Log.i(TAG, "SEND STOP COMMAND 1");
             }
         } else if (v == buttonLeftOn) {
@@ -209,7 +221,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
                 //Log.i(TAG, "SEND START COMMAND 0");
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
                 currentEmsModule.stopCommand(0);
-                buttonLeftOn.setBackgroundColor(Color.GREEN);
+                buttonLeftOn.setBackgroundColor(Color.parseColor(blueColor));
                 //Log.i(TAG, "SEND STOP COMMAND 0");
             }
         }
@@ -223,13 +235,19 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
                                @Override
                                public void run() {
                                    if (currentEmsModule.isConnected()) {
+                                       Log.i("CONNECTION:", "Success");
                                        buttonLeftOn.setEnabled(true);
-                                       buttonLeftOn.setBackgroundColor(Color.GREEN);
+
+
+                                       buttonLeftOn.setBackgroundColor(Color.parseColor(blueColor));
                                        buttonRightOn.setEnabled(true);
-                                       buttonRightOn.setBackgroundColor(Color.GREEN);
+
+                                       buttonRightOn.setBackgroundColor(Color.parseColor(blueColor));
+                                       //buttonRightOn.setBackgroundColor(Color.RED);
                                        buttonLeftOn.invalidate();
                                        buttonRightOn.invalidate();
                                    } else {
+                                       Log.i("CONNECTION:", "Not working yet");
                                        buttonLeftOn.setEnabled(false);
                                        buttonLeftOn.setBackgroundColor(Color.parseColor(greyColor));
                                        buttonRightOn.setEnabled(false);
