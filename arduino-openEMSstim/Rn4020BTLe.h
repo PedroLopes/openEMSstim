@@ -26,6 +26,8 @@
 
 #include <Arduino.h>
 
+  const int wait_bluetooth = 200;
+
   const char out_reboot[] PROGMEM =    "\t\tReboot?: ";
   const char out_version[]  PROGMEM = "\t\tVersion: ";
   const char out_name[] PROGMEM =    "\t\tSet Name: ";

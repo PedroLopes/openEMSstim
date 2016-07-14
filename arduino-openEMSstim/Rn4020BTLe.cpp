@@ -38,17 +38,17 @@ Rn4020BTLe::~Rn4020BTLe() {
 void Rn4020BTLe::reset() {
 	//Nach Stromversorgung in den ersten 5 Sekunden 3 mal von High auf Low wechseln. F�hrt zu vollst�ndigem Reset.
 	digitalWrite(HW_Wake_Up, HIGH);
-	delay(200);
+	delay(wait_bluetooth);
 	digitalWrite(HW_Wake_Up, LOW);
-	delay(200);
+	delay(wait_bluetooth);
 	digitalWrite(HW_Wake_Up, HIGH);
-	delay(200);
+	delay(wait_bluetooth);
 	digitalWrite(HW_Wake_Up, LOW);
-	delay(200);
+	delay(wait_bluetooth);
 	digitalWrite(HW_Wake_Up, HIGH);
-	delay(200);
+	delay(wait_bluetooth);
 	digitalWrite(HW_Wake_Up, LOW);
-	delay(200);
+	delay(wait_bluetooth);
 	digitalWrite(HW_Wake_Up, HIGH);
 	delay(3000);
 }
@@ -58,9 +58,9 @@ void Rn4020BTLe::init(String bluetoothName) {
 
 	String notification = "";
 	serial->begin(115200);
-	delay(800);
+	delay(wait_bluetooth*4);
 	serial->println("SB,0");
-	delay(200);
+	delay(wait_bluetooth);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[9])));
 	Serial.print(buffer); //"\t\tSet Baudrate: "
 	if (serial->available() > 0) {
@@ -69,7 +69,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 	}
 	Serial.println();
 	serial->println("R,1"); //Reboot
-	delay(200);
+	delay(wait_bluetooth);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[0])));
 	Serial.print(buffer); //"\t\tReboot?:
 	if (serial->available() > 0) {
@@ -77,7 +77,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 		Serial.print(notification);
 	}
 	Serial.println();
-	delay(2000);
+	delay(wait_bluetooth * 10);
 	if ( notification.length()>0){
 		serial->begin(2400);
 	}else{
@@ -90,7 +90,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 	bluetoothName = "SN,"+ bluetoothName;
 	//Send a dummy command. Might fail. Next command should work properly
 	serial->println("V");
-	delay(200);
+	delay(wait_bluetooth);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[1])));
 	Serial.print(buffer); //"\t\tVersion: "
 	if (serial->available() > 0) {
@@ -99,7 +99,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 	}
 	Serial.println();
 	serial->println(bluetoothName);
-		delay(200);
+		delay(wait_bluetooth);
     strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[2])));
 		Serial.print(buffer); //"\t\tSet Name: "
 		if (serial->available() > 0) {
@@ -112,7 +112,8 @@ void Rn4020BTLe::init(String bluetoothName) {
 
 		/*
 		serial->println("SR,00004000");
-		delay(200);
+		delay(wait_bluetooth
+		);
     strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[3])));
 		Serial.print(buffer); //"Set peripheral mode Apple Bluetooth Accessory Design Guidelines : "
 		if (serial->available() > 0) {
@@ -124,7 +125,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 
 	//Sets RN4020 in peripheral Mode with Auto Advertising
 	serial->println("SR,20000000");
-	delay(200);
+	delay(wait_bluetooth);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[4])));
 	Serial.print(buffer); //"\t\tSet peripheral mode: "
 	if (serial->available() > 0) {
@@ -136,7 +137,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 
 	//Enables private services.
 	serial->println("SS,C0000001");
-	delay(200);
+	delay(wait);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[5])));
 	Serial.print(buffer); //"\t\tEnable private services: "
 	if (serial->available() > 0) {
@@ -146,7 +147,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 	Serial.println();
 
 	serial->println("PZ"); // Clear the current private service and characteristics
-	delay(200);
+	delay(wait_bluetooth);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[6])));
 	Serial.print(buffer); //"\t\tClear private services:"
 	if (serial->available() > 0) {
@@ -158,7 +159,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble_commands[0])));
 	serial->println(buffer); //  "PS,454d532d536572766963652d424c4531" in ASCII "EMS-Service-BLE1"
-	delay(200);
+	delay(wait_bluetooth);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[7])));
 	Serial.print(buffer); //"\t\tSet new private service: "
 	if (serial->available() > 0) {
@@ -168,7 +169,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 	Serial.println();
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble_commands[1])));
 	serial->println(buffer); // "PC,454d532d537465756572756e672d4348,18,20" in ASCII "EMS-SteuerungCH1" gets Handle 001C (proof with LS)
-	delay(200);
+	delay(wait_bluetooth);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[8])));
 	Serial.print(buffer); // "\t\tSet new private service value: "
 	if (serial->available() > 0) {
@@ -177,7 +178,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 	}
 	Serial.println();
 	serial->println("SB,2");
-	delay(200);
+	delay(wait_bluetooth);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[9])));
 	Serial.print(buffer); //"\t\tSet Baudrate: "
 	if (serial->available() > 0) {
@@ -187,7 +188,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 	Serial.println();
 
 	serial->println("R,1");
-	delay(200);
+	delay(wait_bluetooth);
   strcpy_P(buffer, (char*)pgm_read_word(&(string_table_ble[0])));
 	Serial.print(buffer); //"\t\tReboot?: "
 	if (serial->available() > 0) {
@@ -196,5 +197,5 @@ void Rn4020BTLe::init(String bluetoothName) {
 	}
 	Serial.println();
 	serial->begin(19200);
-	delay(2000);
+	delay(wait_bluetooth * 10);
 }
