@@ -56,6 +56,7 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
     private Button buttonLeftOn;
     private String greyColor = "#ffeaf6ff";
     private String blueColor = "#BBDEFB";
+    private String greenColor = "#AEEA00";
 
     private String configFileName = "openEMSstim_configuration.txt";
     private File configFile;
@@ -204,25 +205,20 @@ public class OpenEMSstim extends Activity implements OnTouchListener, Observer {
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if (v == buttonRightOn) {
-
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 currentEmsModule.startCommand(1);
                 buttonRightOn.setBackgroundColor(Color.RED);
-                //Log.i(TAG, "SEND START COMMAND 1");
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
                 currentEmsModule.stopCommand(1);
                 buttonRightOn.setBackgroundColor(Color.parseColor(blueColor));
-                //Log.i(TAG, "SEND STOP COMMAND 1");
             }
         } else if (v == buttonLeftOn) {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 currentEmsModule.startCommand(0);
-                buttonLeftOn.setBackgroundColor(Color.RED);
-                //Log.i(TAG, "SEND START COMMAND 0");
+                buttonLeftOn.setBackgroundColor(Color.parseColor(greenColor));
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
                 currentEmsModule.stopCommand(0);
                 buttonLeftOn.setBackgroundColor(Color.parseColor(blueColor));
-                //Log.i(TAG, "SEND STOP COMMAND 0");
             }
         }
         v.performClick();
