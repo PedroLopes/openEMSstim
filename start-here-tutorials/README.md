@@ -6,7 +6,7 @@ Here's the summary of all our material on EMS and using openEMSstim board. You c
 
 ![openEMSstim tutorial](../extra/images/youtube/tutorial-openEMsstim.png)
 
-Click [here to watch this tutorial](https://www.youtube.com/watch?v=QSn7W4r4Tbw) on how to step the openEMSstim via Android.
+Click [here to watch this tutorial](https://www.youtube.com/watch?v=XgJF1DVwt7s) on how to step the openEMSstim via Android.
 
 ![basics of ems tutorial](../extra/images/youtube/tutorial-EMSbasics.png)
 
