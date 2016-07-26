@@ -23,7 +23,7 @@ while notStopped:
     duration = "1000"
 
     # read from user input
-    command = raw_input("> Format your command like: channel (0-1) intensity(0-100) timeout(optional) [q to quit]")
+    command = raw_input("> Format your command like: channel (1-2) intensity(0-100) timeout(optional) [q to quit]")
     
     # parse command
     tokenized = command.split(" ")
