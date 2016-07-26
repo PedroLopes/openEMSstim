@@ -48,6 +48,7 @@ float speed_up_on_attack = 0.5;
 void setup() {
   printArray(Serial.list());
   openEMSstim = new Serial(this, Serial.list()[index_of_serial_port], 9600);
+  delay(10000); //waiting to configure bluetooth on board
   size(600, 450);
   ground = new Ground();
   player1 = new Player(1, 20, height/2, false,moveIncrements);
