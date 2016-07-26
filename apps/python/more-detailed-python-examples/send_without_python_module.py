@@ -37,7 +37,7 @@ while notStopped:
     channel = tokenized[0]
     print("channel: " + str(channel))
     if str(channel) == "q":
-        notStopped = Falsei
+        notStopped = False
         print("USER: quited")
         continue
     else:
