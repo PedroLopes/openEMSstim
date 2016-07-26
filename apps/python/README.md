@@ -13,7 +13,7 @@ This is a collection of python examples of how to interface with openEMSstim (vi
 ## How to run the python apps
 
 1. Make sure you have python installed
-2. Install our dependency by doing: pip -r requirements.txt
+2. Install our dependency by doing: ``pip install -r requirements.txt``
 3. Run an app by typing ``python nameofapp.py`` (do not forget to configure serial port)
 
 ## More info about pong-in-python game
