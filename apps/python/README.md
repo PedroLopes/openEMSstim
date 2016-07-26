@@ -14,7 +14,9 @@ This is a collection of python examples of how to interface with openEMSstim (vi
 
 1. Make sure you have python installed
 2. Install our dependency by doing: ``pip install -r requirements.txt``
-3. Run an app by typing ``python nameofapp.py`` (do not forget to configure serial port)
+3. Make sure the app that you want to run is trying to connect to the correct serial port.
+   1. edit the ``nameofapp.py`` file and find the line that defines and opens the EMS device, it should look like: ``ems_device = openEMSstim.openEMSstim(serial_port,19200)`` in this case, all you need to do is change the variable ``serial_port`` to your correct port (check on your operating system what is the port ID) for instance on Mac it might be something like ``serial_port = "/dev/tty.wchusbserial1410"``
+4. Run an app by typing ``python nameofapp.py`` (do not forget to configure serial port)
 
 ## More info about pong-in-python game
 
