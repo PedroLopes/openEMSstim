@@ -3,7 +3,6 @@
 
 from time import sleep
 import serial
-from pyEMS import openems
 
 #setup the connection and its parameters (you can change this below)
 COM_port = '/dev/tty.wchusbserial1410'
