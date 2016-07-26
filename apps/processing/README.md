@@ -1,4 +1,4 @@
-# android using processing: openEMSstim-control
+# 1. android using processing: openEMSstim-control (see below for processing + USB)
 
 This is a simple processing app (mainly made to be invoked inside Android, the APK is there too). 
 You can use it as the basis for your projects because you can clone it (copy paste it with a different name) and edit to create a new app that does much more exciting and interesting things. 
@@ -13,6 +13,11 @@ No worries, the pre-build/binary apps are here too. Navigate into each app folde
 3. Copy those libraries to your processing Library folder
 4. Open processing, and switch it to ANDROID MODE
 5. Open the project (for example: "OnOff-basics.pde") and execute it (will launch and install in a phone if connected or an emulator)
+
+# 2. Processing + USB (for example in your laptop)
+
+Check out the **USB_Pong** example, this provides a simple game that connects to your stimulator over USB. Check the USB_Pong.pde file for instructions on how to play and connect.
+
 
 ### License and Liability
 
