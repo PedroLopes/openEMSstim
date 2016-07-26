@@ -1,0 +1,3 @@
+enum==0.4.4
+pyglet==1.2.4
+pyserial==3.1
