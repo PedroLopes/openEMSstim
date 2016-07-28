@@ -31,14 +31,14 @@ openEMSstim can be interfaced on virtually anything as long as the device featur
 ![NodeJs](extra/images/other-logos/node.js.png)
 ![Processing](extra/images/other-logos/processing.png)
 
-
 ### Authors of this repo's software, casings & hardware
-* Copyright 2016 by Pedro Lopes <plopesresearch@gmail.com> (Software, Cases, Hardware Remix)
-* Copyright 2016 by Doğa Yüksel <dogayuksel@gmail.com> (Cases)
+* Pedro Lopes <plopesresearch@gmail.com> (software, cases, hardware remix, videos)
+* Doğa Yüksel <dogayuksel@gmail.com> (cases)
+* Sijing You (testing)
 
 ### Authors from the original board design (EMS Toolkit)
-* Copyright 2016 by Tim Dünte <tim.duente@hci.uni-hannover.de>
-* Copyright 2016 by Max Pfeiffer <max.pfeiffer@hci.uni-hannover.de>
+* copyright 2016 by Tim Dünte <tim.duente@hci.uni-hannover.de>
+* copyright 2016 by Max Pfeiffer <max.pfeiffer@hci.uni-hannover.de>
 
 ### Original License 
 Licensed under "The MIT License (MIT) – military use of this product is forbidden – V 0.2" by the makers Max Pfeiffer & Tim Dünte, all original designs fully credited to the makers. 
