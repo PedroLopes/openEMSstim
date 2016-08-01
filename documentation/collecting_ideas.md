@@ -32,7 +32,7 @@ Right now, the protocol is the same as on the board by the original authors. We 
 ## Software
 1. Add apps to Google Play Store
 2. Add app to App store (future iPhone app)
-
+3. Android apps should register a [notification](http://www.androidbegin.com/tutorial/android-broadcast-receiver-notification-tutorial/) while running
 
 ### Liability
 
