@@ -47,9 +47,16 @@ def print_configuration(print_channel_config_next_time):
         print(c.name)
         print(c.intensity)
     print("-----------")
-    print("Command history (last 5)")
-    for c in command_history[len(command_history-5):-1]:
-        print c
+    if len(command_history) >= 1:
+        print("Command history (last 5)")
+        for i in range(0,5):
+            print ("len:" + str(len(command_history)))
+            print ("i:" + str(i))
+            print len(command_history)-1-i
+            if i < len(command_history):
+                print(command_history[i])
+    else:
+        print("Note: command history empty")
     print_channel_config_next_time = False
 
 def stimulate(ems_board, command, command_history, save_command_to_history): 
