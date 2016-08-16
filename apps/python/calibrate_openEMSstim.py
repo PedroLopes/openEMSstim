@@ -50,9 +50,6 @@ def print_configuration(print_channel_config_next_time):
     if len(command_history) >= 1:
         print("Command history (last 5)")
         for i in range(1,5):
-            print ("len:" + str(len(command_history)))
-            print ("i:" + str(i))
-            print len(command_history)-1-i
             if i <= len(command_history):
                 print(command_history[len(command_history)-i])
     else:
