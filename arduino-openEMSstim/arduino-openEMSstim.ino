@@ -17,7 +17,7 @@
 #include "avr/pgmspace.h"
 
 //BT: the string below is how your EMS module will show up for other BLE devices
-#define EMS_BLUETOOTH_ID "openEMS6"
+#define EMS_BLUETOOTH_ID "openEMSD"
 
 //DEBUG: setup for verbose mode (prints debug messages if DEBUG_ON is 1)
 #define DEBUG_ON 1
