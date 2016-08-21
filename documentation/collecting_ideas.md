@@ -5,7 +5,8 @@
 2. Add the voltage regulator
 3. Add the protection FET (inverted to prevent reverse polarity)
 4. Add a LiPo battery and a charging circuit
-5. Change the connectors
+5. Change the connectors to simple audio plugs and use this for cables:
+- https://www.alibaba.com/product-detail/banana-connector-medical-funcation-electrode-wire_850949001.html
 
 ### Next version of the protocol (future)
 
