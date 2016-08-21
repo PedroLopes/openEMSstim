@@ -55,6 +55,7 @@ channels[0].add_preset(min_intensity)
 channels[1].add_preset(max_intensity)
 channels[1].add_preset(min_intensity)
 command_history = []
+last_duration = 1000
 
 # settings for commands
 not_ended = True
@@ -94,6 +95,7 @@ def stimulate(ems_board, command, command_history, save_command_to_history, chan
         if save_command_to_history:
             command_history.append(command)
             channels[int(channel)-1].intensity = intensity
+            last_duration = duration
         else:
             command = command_history[-1]
         print("openEMSstim: stimulates now (raw command is:" + str(command) + ")")  
@@ -112,7 +114,7 @@ while (not_ended):
     # direct command mode
     if len(command_tokens) == 3: 
         command = ems_command(command_tokens[0],command_tokens[1],command_tokens[2])
-        stimulate(my_ems_board, command, command_history, True, command_tokens[0], command_tokens[1]) 
+        stimulate(my_ems_board, command, command_history, True, command_tokens[0], command_tokens[1], command_tokens[2]) 
     
     # save preset mode
     elif len(command_tokens) == 2: 
@@ -151,6 +153,14 @@ while (not_ended):
             not_ended = False
 
         # repeat command with de/in-crease in amplitude
-        elif len(command_tokens[0]) == 2: #does this work?
-            print("repeat command with +-")
+        elif len(command_tokens[0]) == 2 and len(command_history) >= 1: #does this work?
+            print("repeat command with +-:" + str(command_tokens))
+            if command_tokens[0][1] == "+":
+                print(command_tokens[0][0])
+                channels[int(command_tokens[0][0])-1].intensity += 1 
+            else:
+                channels[int(command_tokens[0][0])-1].intensity -= 1 
+            command = ems_command(command_tokens[0][0], channels[int(command_tokens[0][0])-1], last_duration)
+            stimulate(my_ems_board, command, command_history, False)
+                
 
