@@ -4,11 +4,11 @@
 """
 version = '0.1'
 
-def ems_command(channel, intensity, duration):
+def ems_command(_channel, _intensity, _duration):
     # forcing everything to be an int
-    channel = int(channel)
-    intensity = int(intensity)
-    duration = int(duration)
+    channel = int(_channel)
+    intensity = int(_intensity)
+    duration = int(_duration)
     command = ""
     
     # check channel input validity
