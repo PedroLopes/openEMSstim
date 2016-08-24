@@ -38,22 +38,20 @@ channel_2_intensity = int(ConfigSectionMap(ems_params,"intensity")['channel2'])
 presets = []
 preset_max = int(ConfigSectionMap(ems_params,"presets")['max'])
 preset_min = int(ConfigSectionMap(ems_params,"presets")['min'])
-preset_mid = int(ConfigSectionMap(ems_params,"presets")['mid'])
-preset_tactile = int(ConfigSectionMap(ems_params,"presets")['tactile'])
+preset_mid_1 = int(ConfigSectionMap(ems_params,"presets")['mid_1'])
+preset_mid_2 = int(ConfigSectionMap(ems_params,"presets")['mid_2'])
+preset_tactile_1 = int(ConfigSectionMap(ems_params,"presets")['tactile_1'])
+preset_tactile_2 = int(ConfigSectionMap(ems_params,"presets")['tactile_2'])
 preset_stimulation_duration = int(ConfigSectionMap(ems_params,"presets")['preset_stimulation_duration'])
 
 # starting defaults
 channels = []
 channels.append(Channel(1,channel_1_intensity,"right_hand_flexor"))
 channels.append(Channel(2,channel_2_intensity,"right_hand_extensor"))
-max_intensity = Preset(preset_max, "max")
-min_intensity = Preset(preset_min, "min")
-tactile_intensity = Preset(preset_tactile, "tactile")
-mid_intensity = Preset(preset_mid, "mid")
-channels[0].add_preset(max_intensity)
-channels[0].add_preset(min_intensity)
-channels[1].add_preset(max_intensity)
-channels[1].add_preset(min_intensity)
+max_intensity = [Preset(preset_max, "max"),Preset(preset_max, "max")]
+min_intensity = [Preset(preset_min, "min"),Preset(preset_min, "min")]
+tactile_intensity = [Preset(preset_tactile_1, "tactile"),Preset(preset_tactile_2, "tactile")]
+mid_intensity = [Preset(preset_mid_1, "mid"),Preset(preset_mid_2, "mid")]
 command_history = []
 last_duration = 1000
 
@@ -91,10 +89,11 @@ def print_configuration(print_channel_config_next_time):
     print_channel_config_next_time = False
 
 def stimulate(ems_board, command, command_history, save_command_to_history, channel=None, intensity=None, duration=None): 
+    global channels
     if command:
         if save_command_to_history:
             command_history.append(command)
-            channels[int(channel)-1].intensity = intensity
+            channels[int(channel)-1].intensity = int(intensity)
             last_duration = duration
         else:
             command = command_history[-1]
@@ -103,9 +102,16 @@ def stimulate(ems_board, command, command_history, save_command_to_history, chan
     else:
         print("Error: command invalid, hence not sent")
 
+def contains(presets,preset):
+    for p in presets:
+        if p.name == preset.name:
+            return True
+        else:
+            return False
+
+
 while (not_ended):
     cli_clear()
-    print(print_channel_config_next_time)
     if print_channel_config_next_time:
         print_configuration(print_channel_config_next_time)
     command = raw_input(command_list)
@@ -120,11 +126,11 @@ while (not_ended):
     elif len(command_tokens) == 2: 
         if command_tokens[0] == "p":
             #p = Preset(command_history[-1])
-            print("save preset mode")
+            print("save preset mode is not implemented yet")
 
     # stimulate with channel + preset
         elif command_tokens[0].isdigit():
-            if presets[command_tokens[1]]:
+            if contains(presets,command_tokens[1]) == True:
                 command = ems_command(command_tokens[0], command_tokens[1], preset_stimulation_duration)
                 stimulate(my_ems_board, command, command_history, True, command_tokens[0], command_tokens[1]) 
             else:
@@ -146,21 +152,27 @@ while (not_ended):
 
         # save preset mode
         elif command_tokens[0] == "s":
-            print("save mode")
+            print("save mode is not implemented yet")
 
         # quit program
         elif command_tokens[0] == "q":
             not_ended = False
-
+        
         # repeat command with de/in-crease in amplitude
-        elif len(command_tokens[0]) == 2 and len(command_history) >= 1: #does this work?
-            print("repeat command with +-:" + str(command_tokens))
-            if command_tokens[0][1] == "+":
-                print(command_tokens[0][0])
-                channels[int(command_tokens[0][0])-1].intensity += 1 
-            else:
-                channels[int(command_tokens[0][0])-1].intensity -= 1 
-            command = ems_command(command_tokens[0][0], channels[int(command_tokens[0][0])-1], last_duration)
-            stimulate(my_ems_board, command, command_history, False)
-                
+        elif len(command_tokens[0]) == 2 and len(command_history) >= 1: 
+            if command_tokens[0][1] == "+" and len(command_history) >= 1:
+                #print("repeat previous command with +1 intensity :" + str(command_tokens))
+                if (channels[int(command_tokens[0][0])-1].intensity + 1 < 100):
+                    channels[int(command_tokens[0][0])-1].intensity += 1 
+                else:
+                    print("Warning: amplitude is maxed out at " + str(channels[int(command_tokens[0][0])-1].intensity))
+            elif command_tokens[0][1] == "-" and len(command_history) >= 1:
+                #print("repeat previous command with -1 intensity :" + str(command_tokens))
+                if (channels[int(command_tokens[0][0])-1].intensity - 1 > 0):
+                    channels[int(command_tokens[0][0])-1].intensity -= 1 
+                else:
+                    print("Warning: amplitude is at zero already " + str(channels[int(command_tokens[0][0])-1].intensity))
+            command = ems_command(command_tokens[0][0], channels[int(command_tokens[0][0])-1].intensity, last_duration)
+            if command:
+                stimulate(my_ems_board, command, command_history, True, int(command_tokens[0][0]), channels[int(command_tokens[0][0])-1].intensity, last_duration)
 
