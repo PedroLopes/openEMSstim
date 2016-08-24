@@ -1,51 +1,37 @@
 #Bill of materials to build an openEMSstim:
 
-##The board
+##The components
 
 
 |  Component | Quantity per board  | Purchase link | model ID | function | notes |  
 | ------------- |:--------:| ---------:|------------:|------------:|------------:|
-| ** MOSFET ** | 4 | http://www.mouser.de/ProductDetail/STMicroelectronics/STD25NF20/?qs=%2fha2pyFadugG3OhZjoDFKyh0rk18p6Gk6XtsUQDOdFA%3d  | STD25NF20 | reduces the EMS signal | we recommend you get exactly these ones. |
-| ** Digital Potenciometer ** | 1 | http://www.mouser.de/ProductDetail/Analog-Devices/AD5252BRUZ1/?qs=sGAEpiMZZMuD%2f7PTYBwKqdeb0s0H1yW0gAAjGmwfPX4%3d | AD5252BRUZ1  | regulates the intensity of the MOSFETS (acts like a analog potentiometer) |We recommend this one. Otherwise you will have to alter code and layout substantially  |
-| ** MOSFET driver  ** | 2 | http://www.mouser.de/ProductDetail/Vishay/VOM1271T/?qs=%2fha2pyFadugAdfNL8MEHhsco%2fxls%252bKOnrvZCnTuskpQ%3d | VOM1271 | controls the MOSFETs | We recommend using exactly this component.|
-| ** Optocoupler ** | 4 | http://www.mouser.de/ProductDetail/Vishay-Semiconductors/LH1546ADF/?qs=sGAEpiMZZMsUriz2CNI3EztS13T2tkDfLMSNBrdz0Go%3d | LH1546ADF | Opens/Closes EMS channels, safety feature. | You can probably replace this by any other optocoupler.  |
-| ** Bluetooth LE ** | 1 | http://www.mouser.de/ProductDetail/Microchip-Technology/RN4020-V-RM120/?qs=sGAEpiMZZMuw1rG4%252bG7fprvXSJvrEemrHKaN1GsnGpE%3d | RN4020-V-RM120 | wireless communication between the arduino and phones/etc, via bluetooth.  |  this is a 4.0 low energy device. You can build this device without it, or you can use another module but you might have to change board layout and/or code (code is made for this one). |
+| ** MOSFET ** (SMD) | 4 | http://www.mouser.de/ProductDetail/STMicroelectronics/STD25NF20/?qs=%2fha2pyFadugG3OhZjoDFKyh0rk18p6Gk6XtsUQDOdFA%3d  | STD25NF20 | reduces the EMS signal | we recommend you get exactly these ones. |
+| ** Digital Potenciometer ** (SMD) | 1 | http://www.mouser.de/ProductDetail/Analog-Devices/AD5252BRUZ1/?qs=sGAEpiMZZMuD%2f7PTYBwKqdeb0s0H1yW0gAAjGmwfPX4%3d | AD5252BRUZ1  | regulates the intensity of the MOSFETS (acts like a analog potentiometer) |We recommend this one. Otherwise you will have to alter code and layout substantially  |
+| ** MOSFET driver  ** (SMD) | 2 | http://www.mouser.de/ProductDetail/Vishay/VOM1271T/?qs=%2fha2pyFadugAdfNL8MEHhsco%2fxls%252bKOnrvZCnTuskpQ%3d | VOM1271 | controls the MOSFETs | We recommend using exactly this component.|
+| ** Optocoupler ** (SMD) | 4 | http://www.mouser.de/ProductDetail/Vishay-Semiconductors/LH1546ADF/?qs=sGAEpiMZZMsUriz2CNI3EztS13T2tkDfLMSNBrdz0Go%3d | LH1546ADF | Opens/Closes EMS channels, safety feature. | You can probably replace this by any other optocoupler.  |
+| ** Bluetooth LE ** (SMD) | 1 | http://www.mouser.de/ProductDetail/Microchip-Technology/RN4020-V-RM120/?qs=sGAEpiMZZMuw1rG4%252bG7fprvXSJvrEemrHKaN1GsnGpE%3d | RN4020-V-RM120 | wireless communication between the arduino and phones/etc, via bluetooth.  |  this is a 4.0 low energy device. You can build this device without it, or you can use another module but you might have to change board layout and/or code (code is made for this one). |
+| Headers for board to host the arduino (SMD) | 2 | http://www.mouser.de/ProductDetail/Harwin/M20-8771546/?qs=sGAEpiMZZMs%252bGHln7q6pmzlZUuX%2f53qjH35u20JRJjk%3d | 3M 30306-5002HB | electrode cables connect here | If you prefer through-hole headers you will have to change the board layout + routing on the other side. | 
+| Header for EMS signals | 2|  http://www.mouser.de/ProductDetail/3M-Electronic-Solutions-Division/30306-5002HB/?qs=sGAEpiMZZMs%252bGHln7q6pmwu5ra4CY41iJpcAbbk2xIE%3d | 3M 30306-5002HB |  connecting to electrodes / EMS machine | |
 
 ###Notes about MOSFETS
 The board is calibrated to these MOSFETS, in fact we have detected that differences between MOSFETS actually result in perceivable differences in the intensity of the EMS channel. For now, until we find another board design without this component, we recommend you get exactly these ones. 
 
+##The resistors and capacitors (all SMD of size: 0805)
+
+
+| value | quantity per board |
+| ------------- |:--------:|
+| 1,5MΩ | 2 | 
+| 4,7kΩ | 2 | 
+| 2,2kΩ | 2 | | 1kΩ | 4 | | 470Ω | 1 | | 220Ω | 4 | | 100nf | 2 | 
+￼##The LEDs (all SMD of size: 0603)1x Green LED, 1x Blue LED, 1x Red LED￼
 ##The electrode cables
 
-Headers for board (electrode cables connect here)
-quantity per board: 2
-http://www.mouser.de/ProductDetail/3M-Electronic-Solutions-Division/30306-5002HB/?qs=sGAEpiMZZMs%252bGHln7q6pmwu5ra4CY41iJpcAbbk2xIE%3d
-Function: 
-Note: If you prefer through-hole headers you will have to change the board layout + routing on the other side.
-
-Headers for arduino? 
-http://www.mouser.de/ProductDetail/Harwin/M20-7821546/?qs=sGAEpiMZZMs%252bGHln7q6pmzlZUuX%2f53qjoEZidzLYs%252bo%3d
-
-Headers for arduino on board?
-http://www.mouser.de/ProductDetail/Harwin/M20-8771546/?qs=sGAEpiMZZMs%252bGHln7q6pmzlZUuX%2f53qjH35u20JRJjk%3d
-Function: 
-
-For making electrodes cables: 
-Notes: V1 version of our kit, uses data cables, aka ribbon cable, to transfer the signal (they are regulated to 300V)
-
-cable (ribbon cable)
-quantity per board: 2m
-http://www.mouser.de/ProductDetail/3M-Electronic-Solutions-Division/3365-26-CUT-LENGTH/?qs=sGAEpiMZZMsJiFh04Lj2rhlO6VJHoBHccza31peO430%3d
-Function: Takes EMS signal.
-
-Headers for cable (female)
-quantity per board: 2
-http://www.mouser.de/ProductDetail/FCI/71600-006LF/?qs=sGAEpiMZZMs%252bGHln7q6pm24n0txessAMv97Wpyh9hZc%3d
-Function: Connects to openEMSstim board.
-
-pins for cable
-quantity per board: 4
-https://www.conrad.de/de/crimpkontakt-polzahl-gesamt-1-te-connectivity-60620-1-1-st-1422676.html
-Function: connects to pigtail electrodes
+|  Component | Quantity per board  | Purchase link | model ID | function | notes |  
+| ------------- |:--------:| ---------:|------------:|------------:|------------:|
+| Electrode cables (ribbon cable) | 2m | http://www.mouser.de/ProductDetail/3M-Electronic-Solutions-Division/3365-26-CUT-LENGTH/?qs=sGAEpiMZZMsJiFh04Lj2rhlO6VJHoBHccza31peO430%3d | ribbon cable | Takes EMS signal. | |
+| Headers for cable (female)| 2 | http://www.mouser.de/ProductDetail/FCI/71600-006LF/?qs=sGAEpiMZZMs%252bGHln7q6pm24n0txessAMv97Wpyh9hZc%3d | 1600-006LF | Connects to openEMSstim board. | | 
+| pins for cable | 4 | https://www.conrad.de/de/crimpkontakt-polzahl-gesamt-1-te-connectivity-60620-1-1-st-1422676.html | crimp pin connector |  connects to pigtail electrodes | | 
 
 
 
