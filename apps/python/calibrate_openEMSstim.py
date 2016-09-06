@@ -1,8 +1,12 @@
 # This program enables to send commands via USB to the openEMSstim board
 # NOTE: To use it you will need to adjust the serial_port to whatever your operating system reported for the arduino connection (Windows will be something like COM3, check on Device Manager, while unix will be /dev/tty.usbsomething)
-serial_port = "/dev/tty.wchusbserial14220"
-import os
 import sys
+
+if len(sys.argv) >= 2:
+    serial_port = sys.argv[1]
+else:    
+    serial_port = "/dev/tty.wchusbserial14210"
+import os
 from time import sleep
 from pyEMS import openEMSstim
 from pyEMS.EMSCommand import ems_command
@@ -69,8 +73,8 @@ command_list += "\t[p] [name] to save current EMS parameters as preset with [nam
 command_list += "\t[q] to quit\n"
 
 def cli_clear():
-    #if os.type != "Windows":
-    #    print(chr(27) + "[2J")
+    if not sys.platform.startswith('win'):
+        print(chr(27) + "[2J")
     pass
 
 def print_configuration(print_channel_config_next_time):
@@ -112,6 +116,8 @@ def contains(presets,preset):
 
 while (not_ended):
     cli_clear()
+    if len(command_history) >= 1:
+        print("Last command: " + str(command_history[-1]))
     if print_channel_config_next_time:
         print_configuration(print_channel_config_next_time)
     command = raw_input(command_list)

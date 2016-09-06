@@ -2,12 +2,16 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var serialport = require('serialport');
    SerialPort = serialport.SerialPort; 
-   portName = "/dev/tty.wchusbserial1410";
+   portName = "/dev/tty.wchusbserial14210";
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/',function(req,res){
   res.sendfile("index.html");
+});
+
+app.get('/advanced',function(req,res){
+  res.sendfile("editor.html");
 });
 
 app.post('/ems',function(req,res){
