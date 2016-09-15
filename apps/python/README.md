@@ -9,6 +9,7 @@ This is a collection of python examples of how to interface with openEMSstim (vi
 3. pong-in-python: is an example of a simple game using EMS and Python
 4. more-detailed-python-examples: has some extra things you might want to explore
 5. tests: run ``python test_openems_module.py`` to check if your python module works
+6. calibrate_openEMSstim.py: is a small script that helps you calibrate values for your prototypes. Note that the best way to interact wiuth it is by somply launching it, i.e., ``python calibrate_openEMSstim.py`` and follow the on screen commands.  
 	
 ## How to run the python apps
 
