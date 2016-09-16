@@ -1,4 +1,4 @@
- add from preset import Preset
+from preset import Preset
 
 class Channel:
 
