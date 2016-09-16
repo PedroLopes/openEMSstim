@@ -1,0 +1,12 @@
+[intensity]
+channel1: 80
+channel2: 90
+
+[presets]
+max: 100 
+min: 0
+mid_1: 55
+mid_2: 85
+tactile_1: 68
+tactile_2: 88
+preset_stimulation_duration: 1500
