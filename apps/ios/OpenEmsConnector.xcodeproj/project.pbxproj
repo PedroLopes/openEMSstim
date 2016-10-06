@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		885B6C721D7A119E005FA52D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B6C711D7A119E005FA52D /* AppDelegate.swift */; };
+		885B6C741D7A119E005FA52D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B6C731D7A119E005FA52D /* ViewController.swift */; };
+		885B6C771D7A119E005FA52D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885B6C751D7A119E005FA52D /* Main.storyboard */; };
+		885B6C791D7A119E005FA52D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885B6C781D7A119E005FA52D /* Assets.xcassets */; };
+		885B6C7C1D7A119E005FA52D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 885B6C7A1D7A119E005FA52D /* LaunchScreen.storyboard */; };
+		885B6C871D7A119E005FA52D /* OpenEmsConnectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B6C861D7A119E005FA52D /* OpenEmsConnectorTests.swift */; };
+		885B6C921D7A119E005FA52D /* OpenEmsConnectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B6C911D7A119E005FA52D /* OpenEmsConnectorUITests.swift */; };
+		885B6CA31D7A1704005FA52D /* OpenEmsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885B6CA21D7A1704005FA52D /* OpenEmsButton.swift */; };
+		88908E891D7AD4CA0026AFA9 /* OpenEmsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88908E881D7AD4CA0026AFA9 /* OpenEmsConstants.swift */; };
+		88908E8B1D7AD5420026AFA9 /* OpenEmsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88908E8A1D7AD5420026AFA9 /* OpenEmsMessage.swift */; };
+		88908E8D1D7AD59A0026AFA9 /* OpenEmsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88908E8C1D7AD59A0026AFA9 /* OpenEmsHelper.swift */; };
+		88908E8F1D7AD66D0026AFA9 /* OpenEmsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88908E8E1D7AD66D0026AFA9 /* OpenEmsService.swift */; };
+		88908E911D7AD6B60026AFA9 /* OpenEmsConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88908E901D7AD6B60026AFA9 /* OpenEmsConnector.swift */; };
+		88908E931D7AD7590026AFA9 /* OpenEmsConnectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88908E921D7AD7590026AFA9 /* OpenEmsConnectorDelegate.swift */; };
+		88908E951D7AE4FA0026AFA9 /* OpenEmsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88908E8C1D7AD59A0026AFA9 /* OpenEmsHelper.swift */; };
+		88908E961D7AE50F0026AFA9 /* OpenEmsMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88908E8A1D7AD5420026AFA9 /* OpenEmsMessage.swift */; };
+		88908E971D7AE5880026AFA9 /* OpenEmsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88908E881D7AD4CA0026AFA9 /* OpenEmsConstants.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		885B6C831D7A119E005FA52D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 885B6C661D7A119E005FA52D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 885B6C6D1D7A119E005FA52D;
+			remoteInfo = OpenEmsConnector;
+		};
+		885B6C8E1D7A119E005FA52D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 885B6C661D7A119E005FA52D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 885B6C6D1D7A119E005FA52D;
+			remoteInfo = OpenEmsConnector;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		885B6C6E1D7A119E005FA52D /* OpenEmsConnector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenEmsConnector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		885B6C711D7A119E005FA52D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		885B6C731D7A119E005FA52D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		885B6C761D7A119E005FA52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		885B6C781D7A119E005FA52D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		885B6C7B1D7A119E005FA52D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		885B6C7D1D7A119E005FA52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		885B6C821D7A119E005FA52D /* OpenEmsConnectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenEmsConnectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		885B6C861D7A119E005FA52D /* OpenEmsConnectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenEmsConnectorTests.swift; sourceTree = "<group>"; };
+		885B6C881D7A119E005FA52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		885B6C8D1D7A119E005FA52D /* OpenEmsConnectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenEmsConnectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		885B6C911D7A119E005FA52D /* OpenEmsConnectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenEmsConnectorUITests.swift; sourceTree = "<group>"; };
+		885B6C931D7A119E005FA52D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		885B6CA21D7A1704005FA52D /* OpenEmsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEmsButton.swift; sourceTree = "<group>"; };
+		88908E881D7AD4CA0026AFA9 /* OpenEmsConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEmsConstants.swift; sourceTree = "<group>"; };
+		88908E8A1D7AD5420026AFA9 /* OpenEmsMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEmsMessage.swift; sourceTree = "<group>"; };
+		88908E8C1D7AD59A0026AFA9 /* OpenEmsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEmsHelper.swift; sourceTree = "<group>"; };
+		88908E8E1D7AD66D0026AFA9 /* OpenEmsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEmsService.swift; sourceTree = "<group>"; };
+		88908E901D7AD6B60026AFA9 /* OpenEmsConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEmsConnector.swift; sourceTree = "<group>"; };
+		88908E921D7AD7590026AFA9 /* OpenEmsConnectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenEmsConnectorDelegate.swift; sourceTree = "<group>"; };
+		88908E941D7AE1020026AFA9 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		885B6C6B1D7A119E005FA52D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		885B6C7F1D7A119E005FA52D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		885B6C8A1D7A119E005FA52D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		885B6C651D7A119E005FA52D = {
+			isa = PBXGroup;
+			children = (
+				88908E941D7AE1020026AFA9 /* Readme.md */,
+				885B6C701D7A119E005FA52D /* OpenEmsConnector */,
+				885B6C851D7A119E005FA52D /* OpenEmsConnectorTests */,
+				885B6C901D7A119E005FA52D /* OpenEmsConnectorUITests */,
+				885B6C6F1D7A119E005FA52D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		885B6C6F1D7A119E005FA52D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				885B6C6E1D7A119E005FA52D /* OpenEmsConnector.app */,
+				885B6C821D7A119E005FA52D /* OpenEmsConnectorTests.xctest */,
+				885B6C8D1D7A119E005FA52D /* OpenEmsConnectorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		885B6C701D7A119E005FA52D /* OpenEmsConnector */ = {
+			isa = PBXGroup;
+			children = (
+				88908E871D7AD4840026AFA9 /* DeviceConnection */,
+				885B6C9F1D7A16C6005FA52D /* Controls */,
+				885B6C711D7A119E005FA52D /* AppDelegate.swift */,
+				885B6C731D7A119E005FA52D /* ViewController.swift */,
+				885B6C751D7A119E005FA52D /* Main.storyboard */,
+				885B6C781D7A119E005FA52D /* Assets.xcassets */,
+				885B6C7A1D7A119E005FA52D /* LaunchScreen.storyboard */,
+				885B6C7D1D7A119E005FA52D /* Info.plist */,
+			);
+			path = OpenEmsConnector;
+			sourceTree = "<group>";
+		};
+		885B6C851D7A119E005FA52D /* OpenEmsConnectorTests */ = {
+			isa = PBXGroup;
+			children = (
+				885B6C861D7A119E005FA52D /* OpenEmsConnectorTests.swift */,
+				885B6C881D7A119E005FA52D /* Info.plist */,
+			);
+			path = OpenEmsConnectorTests;
+			sourceTree = "<group>";
+		};
+		885B6C901D7A119E005FA52D /* OpenEmsConnectorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				885B6C911D7A119E005FA52D /* OpenEmsConnectorUITests.swift */,
+				885B6C931D7A119E005FA52D /* Info.plist */,
+			);
+			path = OpenEmsConnectorUITests;
+			sourceTree = "<group>";
+		};
+		885B6C9F1D7A16C6005FA52D /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				885B6CA21D7A1704005FA52D /* OpenEmsButton.swift */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		88908E871D7AD4840026AFA9 /* DeviceConnection */ = {
+			isa = PBXGroup;
+			children = (
+				88908E881D7AD4CA0026AFA9 /* OpenEmsConstants.swift */,
+				88908E8A1D7AD5420026AFA9 /* OpenEmsMessage.swift */,
+				88908E8C1D7AD59A0026AFA9 /* OpenEmsHelper.swift */,
+				88908E8E1D7AD66D0026AFA9 /* OpenEmsService.swift */,
+				88908E901D7AD6B60026AFA9 /* OpenEmsConnector.swift */,
+				88908E921D7AD7590026AFA9 /* OpenEmsConnectorDelegate.swift */,
+			);
+			name = DeviceConnection;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		885B6C6D1D7A119E005FA52D /* OpenEmsConnector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 885B6C961D7A119E005FA52D /* Build configuration list for PBXNativeTarget "OpenEmsConnector" */;
+			buildPhases = (
+				885B6C6A1D7A119E005FA52D /* Sources */,
+				885B6C6B1D7A119E005FA52D /* Frameworks */,
+				885B6C6C1D7A119E005FA52D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenEmsConnector;
+			productName = OpenEmsConnector;
+			productReference = 885B6C6E1D7A119E005FA52D /* OpenEmsConnector.app */;
+			productType = "com.apple.product-type.application";
+		};
+		885B6C811D7A119E005FA52D /* OpenEmsConnectorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 885B6C991D7A119E005FA52D /* Build configuration list for PBXNativeTarget "OpenEmsConnectorTests" */;
+			buildPhases = (
+				885B6C7E1D7A119E005FA52D /* Sources */,
+				885B6C7F1D7A119E005FA52D /* Frameworks */,
+				885B6C801D7A119E005FA52D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				885B6C841D7A119E005FA52D /* PBXTargetDependency */,
+			);
+			name = OpenEmsConnectorTests;
+			productName = OpenEmsConnectorTests;
+			productReference = 885B6C821D7A119E005FA52D /* OpenEmsConnectorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		885B6C8C1D7A119E005FA52D /* OpenEmsConnectorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 885B6C9C1D7A119E005FA52D /* Build configuration list for PBXNativeTarget "OpenEmsConnectorUITests" */;
+			buildPhases = (
+				885B6C891D7A119E005FA52D /* Sources */,
+				885B6C8A1D7A119E005FA52D /* Frameworks */,
+				885B6C8B1D7A119E005FA52D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				885B6C8F1D7A119E005FA52D /* PBXTargetDependency */,
+			);
+			name = OpenEmsConnectorUITests;
+			productName = OpenEmsConnectorUITests;
+			productReference = 885B6C8D1D7A119E005FA52D /* OpenEmsConnectorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		885B6C661D7A119E005FA52D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = touchLOGIE;
+				TargetAttributes = {
+					885B6C6D1D7A119E005FA52D = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = DLQC473DUX;
+						ProvisioningStyle = Automatic;
+					};
+					885B6C811D7A119E005FA52D = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = DLQC473DUX;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 885B6C6D1D7A119E005FA52D;
+					};
+					885B6C8C1D7A119E005FA52D = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = DLQC473DUX;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 885B6C6D1D7A119E005FA52D;
+					};
+				};
+			};
+			buildConfigurationList = 885B6C691D7A119E005FA52D /* Build configuration list for PBXProject "OpenEmsConnector" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 885B6C651D7A119E005FA52D;
+			productRefGroup = 885B6C6F1D7A119E005FA52D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				885B6C6D1D7A119E005FA52D /* OpenEmsConnector */,
+				885B6C811D7A119E005FA52D /* OpenEmsConnectorTests */,
+				885B6C8C1D7A119E005FA52D /* OpenEmsConnectorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		885B6C6C1D7A119E005FA52D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				885B6C7C1D7A119E005FA52D /* LaunchScreen.storyboard in Resources */,
+				885B6C791D7A119E005FA52D /* Assets.xcassets in Resources */,
+				885B6C771D7A119E005FA52D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		885B6C801D7A119E005FA52D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		885B6C8B1D7A119E005FA52D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		885B6C6A1D7A119E005FA52D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88908E931D7AD7590026AFA9 /* OpenEmsConnectorDelegate.swift in Sources */,
+				885B6C741D7A119E005FA52D /* ViewController.swift in Sources */,
+				88908E8F1D7AD66D0026AFA9 /* OpenEmsService.swift in Sources */,
+				88908E8B1D7AD5420026AFA9 /* OpenEmsMessage.swift in Sources */,
+				88908E911D7AD6B60026AFA9 /* OpenEmsConnector.swift in Sources */,
+				88908E891D7AD4CA0026AFA9 /* OpenEmsConstants.swift in Sources */,
+				88908E8D1D7AD59A0026AFA9 /* OpenEmsHelper.swift in Sources */,
+				885B6CA31D7A1704005FA52D /* OpenEmsButton.swift in Sources */,
+				885B6C721D7A119E005FA52D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		885B6C7E1D7A119E005FA52D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				885B6C871D7A119E005FA52D /* OpenEmsConnectorTests.swift in Sources */,
+				88908E971D7AE5880026AFA9 /* OpenEmsConstants.swift in Sources */,
+				88908E951D7AE4FA0026AFA9 /* OpenEmsHelper.swift in Sources */,
+				88908E961D7AE50F0026AFA9 /* OpenEmsMessage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		885B6C891D7A119E005FA52D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				885B6C921D7A119E005FA52D /* OpenEmsConnectorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		885B6C841D7A119E005FA52D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 885B6C6D1D7A119E005FA52D /* OpenEmsConnector */;
+			targetProxy = 885B6C831D7A119E005FA52D /* PBXContainerItemProxy */;
+		};
+		885B6C8F1D7A119E005FA52D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 885B6C6D1D7A119E005FA52D /* OpenEmsConnector */;
+			targetProxy = 885B6C8E1D7A119E005FA52D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		885B6C751D7A119E005FA52D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				885B6C761D7A119E005FA52D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		885B6C7A1D7A119E005FA52D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				885B6C7B1D7A119E005FA52D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		885B6C941D7A119E005FA52D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		885B6C951D7A119E005FA52D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		885B6C971D7A119E005FA52D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DLQC473DUX;
+				INFOPLIST_FILE = OpenEmsConnector/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.touchlogie.open-ems-connector";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		885B6C981D7A119E005FA52D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DLQC473DUX;
+				INFOPLIST_FILE = OpenEmsConnector/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.touchlogie.open-ems-connector";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		885B6C9A1D7A119E005FA52D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = DLQC473DUX;
+				INFOPLIST_FILE = OpenEmsConnectorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.touchlogie.OpenEmsConnectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenEmsConnector.app/OpenEmsConnector";
+			};
+			name = Debug;
+		};
+		885B6C9B1D7A119E005FA52D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = DLQC473DUX;
+				INFOPLIST_FILE = OpenEmsConnectorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.touchlogie.OpenEmsConnectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OpenEmsConnector.app/OpenEmsConnector";
+			};
+			name = Release;
+		};
+		885B6C9D1D7A119E005FA52D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = DLQC473DUX;
+				INFOPLIST_FILE = OpenEmsConnectorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.touchlogie.OpenEmsConnectorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = OpenEmsConnector;
+			};
+			name = Debug;
+		};
+		885B6C9E1D7A119E005FA52D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = DLQC473DUX;
+				INFOPLIST_FILE = OpenEmsConnectorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.touchlogie.OpenEmsConnectorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = OpenEmsConnector;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		885B6C691D7A119E005FA52D /* Build configuration list for PBXProject "OpenEmsConnector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				885B6C941D7A119E005FA52D /* Debug */,
+				885B6C951D7A119E005FA52D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		885B6C961D7A119E005FA52D /* Build configuration list for PBXNativeTarget "OpenEmsConnector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				885B6C971D7A119E005FA52D /* Debug */,
+				885B6C981D7A119E005FA52D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		885B6C991D7A119E005FA52D /* Build configuration list for PBXNativeTarget "OpenEmsConnectorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				885B6C9A1D7A119E005FA52D /* Debug */,
+				885B6C9B1D7A119E005FA52D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		885B6C9C1D7A119E005FA52D /* Build configuration list for PBXNativeTarget "OpenEmsConnectorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				885B6C9D1D7A119E005FA52D /* Debug */,
+				885B6C9E1D7A119E005FA52D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 885B6C661D7A119E005FA52D /* Project object */;
+}
