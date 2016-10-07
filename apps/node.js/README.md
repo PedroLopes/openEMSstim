@@ -6,7 +6,7 @@ To interface through a web server we recommend creating a nodejs server (optiona
 ## How to run the nodejs examples? 
 
 1. Get nodejs 
-2. install the dependencies by running the following commands:
+2. install the dependencies by running the following command: ``npm install``. Alternatively it would be the same as installing these three packages below manually.
 	1. ``npm install serialport`` (for USB communication)
 	2. ``npm install express`` (for the web server side)
 	3. ``npm install body-parser`` (for the web server side)
@@ -14,6 +14,9 @@ To interface through a web server we recommend creating a nodejs server (optiona
 4. (if you are running a web server) open http://localhost:3000 on your browser. You will see:
 ![nodejsapp](../../extra/images/nodejs/nodejsapp.png)
 
+
+### Additional contributors
+* Fushimi Ryohei <fushimi.ryohei@gmail.com> (node.js fixes)
 
 ### License and Liability
 
