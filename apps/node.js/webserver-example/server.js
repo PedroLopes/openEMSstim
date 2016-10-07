@@ -1,7 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-var serialport = require('serialport');
-   SerialPort = serialport.SerialPort; 
+var SerialPort = require('serialport');
    portName = "/dev/tty.wchusbserial14210";
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,7 +29,7 @@ app.listen(3000,function(){
 
 var openEMSstim = new SerialPort(portName, {
    baudRate: 19200,
-   parser: serialport.parsers.readline("\n")
+   parser: SerialPort.parsers.readline("\n")
  });
 
 // Register functions for handling the communication with openEMSstim
