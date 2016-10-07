@@ -34,7 +34,12 @@ openEMSstim can be interfaced on virtually anything as long as the device featur
 ### Authors of this repo's software, casings & hardware
 * Pedro Lopes <plopesresearch@gmail.com> (software, cases, hardware remix, videos)
 * Doğa Yüksel <dogayuksel@gmail.com> (cases)
-* Sijing You (testing)
+* Sijing You <sijing.you@student.hpi.uni-potsdam.de> (testing)
+
+
+### Contributers
+* Steffen Norbert Franz Blümm <steffen-norbert-franz.bluemm@stud.uni-bamberg.de> (iOS code)
+* Fushimi Ryohei <fushimi.ryohei@gmail.com> (node.js fixes)
 
 ### Authors from the original board design (EMS Toolkit)
 * copyright 2016 by Tim Dünte <tim.duente@hci.uni-hannover.de>
