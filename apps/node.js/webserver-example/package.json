@@ -2,7 +2,8 @@
   "name": "openEMSstim",
   "version": "0.0.1",
   "dependencies": {
-    "body-parser": "^1.8.1",
-    "express": "^4.9.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "serialport": "^4.0.3"
   }
 }
