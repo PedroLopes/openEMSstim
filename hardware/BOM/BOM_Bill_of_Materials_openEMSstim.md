@@ -12,6 +12,9 @@
 | ** Bluetooth LE ** (SMD) | 1 | http://www.mouser.de/ProductDetail/Microchip-Technology/RN4020-V-RM120/?qs=sGAEpiMZZMuw1rG4%252bG7fprvXSJvrEemrHKaN1GsnGpE%3d | RN4020-V-RM120 | wireless communication between the arduino and phones/etc, via bluetooth.  |  this is a 4.0 low energy device. You can build this device without it, or you can use another module but you might have to change board layout and/or code (code is made for this one). |
 | Headers for board to host the arduino (SMD) | 2 | http://www.mouser.de/ProductDetail/Harwin/M20-8771546/?qs=sGAEpiMZZMs%252bGHln7q6pmzlZUuX%2f53qjH35u20JRJjk%3d | 3M 30306-5002HB | electrode cables connect here | If you prefer through-hole headers you will have to change the board layout + routing on the other side. | 
 | Header for EMS signals | 2|  http://www.mouser.de/ProductDetail/3M-Electronic-Solutions-Division/30306-5002HB/?qs=sGAEpiMZZMs%252bGHln7q6pmwu5ra4CY41iJpcAbbk2xIE%3d | 3M 30306-5002HB |  connecting to electrodes / EMS machine | |
+| ** Diode ** (SMD) | 1 | http://www.mouser.de/ProductDetail/NXP-Semiconductors/1PS70SB10115/?qs=sGAEpiMZZMtQ8nqTKtFS%2fPOtlaMxh7PwzjxDSYDALEk= | 1PS70SB10,115 |  Voltage reversal protection | Not tested yet, part of V3 design only |
+| ** Slide Switch ** (SMD) | 1 | http://www.mouser.de/ProductDetail/ALPS/SSSS810701/?qs=sGAEpiMZZMtHXLepoqNyVe%252bcQMRoBF1BAzyvwoNmgBo%3d | SSSS810701 | on/off switch, interrupts battery | Not tested yet, part of V3 design only | 
+
 
 ###Notes about MOSFETS
 The board is calibrated to these MOSFETS, in fact we have detected that differences between MOSFETS actually result in perceivable differences in the intensity of the EMS channel. For now, until we find another board design without this component, we recommend you get exactly these ones. 
