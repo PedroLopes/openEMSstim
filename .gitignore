@@ -35,6 +35,21 @@ eagle.epf
 *.gpi
 *.pls
 
+# ignoring GERBER (for now)
+*.GBL
+*.GBO
+*.GBP
+*.GBS
+*.GML
+*.GTL
+*.GTO
+*.GTP
+*.GTS
+hardware/schematics/*.TXT
+
+
+
+
 *.drd
 *.drd.*
 
