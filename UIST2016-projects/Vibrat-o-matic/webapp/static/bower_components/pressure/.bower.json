@@ -1,0 +1,39 @@
+{
+  "name": "pressure",
+  "description": "Pressure is a JavaScript library for handling both Force Touch and 3D Touch through a single API",
+  "main": "dist/pressure.min.js",
+  "authors": [
+    "Stuart Yamartino"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "forcetouch",
+    "force-touch",
+    "3dtouch",
+    "3d-touch",
+    "pressure",
+    "pressurejs",
+    "iphone6s",
+    "iphone6splus"
+  ],
+  "homepage": "https://github.com/yamartino/pressure",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "version": "1.0.1",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.1",
+    "commit": "ed88f8789506ada56638aee4e8ed567f10269c61"
+  },
+  "_source": "https://github.com/yamartino/pressure.git",
+  "_target": "^1.0.1",
+  "_originalSource": "pressure",
+  "_direct": true
+}

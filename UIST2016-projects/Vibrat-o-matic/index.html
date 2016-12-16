@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vibrat-o-matic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap core CSS -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+    <![endif]-->
+    <style>
+    .container{width: 720px;}
+    h1{text-align:center;}
+    .author{text-align:center; margin-bottom: 2em;}
+    img{width: 100%;}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <h1 id="vibrat-o-matic">Vibrat-o-matic</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-4 author">
+          <strong>Eisuke Fujinawa</strong><br />
+          The University of Tokyo<br/>
+          nawafuji@cyber.t.u-tokyo.ac.jp
+        </div>
+
+        <div class="col-md-4 author">
+          <strong>Ryohei Fushimi</strong><br />
+          The University of Tokyo<br />
+          fushimi.ryohei@gmail.com
+        </div>
+
+        <div class="col-md-2"></div>
+        <div class="col-md-12">
+          <iframe width="720" height="410" src="https://www.youtube.com/embed/WiTxrEXpH-c" frameborder="0" allowfullscreen></iframe>
+          <hr />
+          <p>Vibrat-o-matic makes singing fun! This tool stimulate muscles around neck and stomach to generate a clean vibrato easily. You can control, record and replay where to put vibrato and how strong vibrato you sing with.</p>
+          <p>This project is built on <a href="https://github.com/PedroLopes/openEMSstim">openEMSstim</a>, open-hardware platform for controling EMS device. This is open source project and we appriciate if you give leave some advices, problems, PR or typo fixes on <a href="https://github.com/sidestepism/Vibrat-o-matic/issues">Issues</a> page.</p>
+          <p>
+            <strong>Vibrat-o-matic got awarded as 1st People's Choice at UIST 2016 Student Innovation Contest!</strong>
+          </p>
+          <h2 id="architecture">Architecture</h2>
+          <div class="figure">
+            <img src="images/architecture.png" />
+          </div>
+          <h2 id="dependencies">Dependencies</h2>
+          <ul>
+            <li>node v6.7.0</li>
+            <li>npm</li>
+            <li>socket.io@1.4.8</li>
+            <li>express@4.14.0</li>
+            <li>serialport@4.0.3</li>
+            <li>jquery</li>
+            <li>pressure.js</li>
+          </ul>
+          <h2 id="how-to-use">How to use</h2>
+
+          <ul>
+            <li><p>Vibrat-o-matic works with <a href="https://github.com/PedroLopes/openEMSstim">openEMSstim</a>, open-hardware module to adjust the intensity of EMS/TENS stimulators. Read its instruction to use EMS/TENS safely.</p></li>
+            <li><p>We modified arudino program on openEMSstim slightly: ours accepts <strong>Channel 2</strong> to both activate Channel 0 and 1 on one command, and baud rate is set to 57600 (for performance reasons). Please use the arduino firmware on <a href="https://github.com/sidestepism/openEMSstim">our fork</a> instead of the original one.</p></li>
+          </ul>
+          <h3 id="install-npm-dependencies">0. Install npm dependencies</h3>
+
+          <pre><code>cd webapp
+npm install</code></pre>
+          <h3 id="launch-http-server">1. Launch HTTP server</h3>
+          <p>Before testing, please make sure <em>frequency of EMS is set to 5-8 Hz and intensity to minimum.</em></p>
+          <pre><code>cd webapp
+node index.js [Path to serial port]</code></pre>
+          <p>Default <code>[Path to serial port]</code> is set to <code>/dev/tty.usbserial-A9O3R1XL</code>. You can know your path by running <code>ls /dev/tty.usbserial*</code> on bash when openEMSstim is connected to your machine via USB.</p>
+          <p>If web server launched successfully, you will see message like <code>listening on *:3000</code>. It means now the process wait for connection from web browser on port 3000. Open <code>http://localhost:3000</code> on your browser.</p>
+          <h3 id="put-electrodes">2. Put electrodes</h3>
+          <p>Neck and stomach are recommended place to put electrodes. We recommend start with stomach, but you can try both of them.</p>
+          <p>See a diagram below:</p>
+          <div class="figure">
+            <img src="images/electrode.png" alt="Where to put electrode" />
+          </div>
+          <h3 id="test-the-features">2. Test the features</h3>
+          <p>On <strong>feature test</strong> section you can test if the system works.</p>
+          <p>Then set <strong>duration</strong> to 200ms and <strong>max intensity</strong> to 80%, and increase intensity of your EMS device until you can feel vibration of muscles enough for singing.</p>
+          <p>If <strong>Repeat</strong> checkbox is checked, the signal will be sent repeadedly.</p>
+          <div class="figure">
+            <img src="images/feature.png" alt="Where to put electrode" />
+          </div>
+          <h3 id="sing">3. Sing!</h3>
+          <p>On <strong>Vibrat-o-matic!</strong> section you can control signal for singing.</p>
+          <p>Move <strong>Strength</strong> slider for control strength of vibrato. Instead you can drag mouse pointer on <strong>Drag Pad</strong> to control strength. You can see waveform on <strong>Waveform</strong> section (Note that the waveform is approximated. Frequency is dependent on your EMS setting).</p>
+          <p><strong>Force Detection</strong> Button is for Apple devices which has force detecting trackpad (MacBook 2015, MacBook 2016) or 3D Touch (iPhone 6S, 7). The more strongly you pushed this button, the stronger vibrato you can get.</p>
+          <p>Below these sections you can see <em>Song switcher</em>, <strong>Play</strong> and <strong>Record</strong> buttons and Youtube video. Select a song from a switcher (or push <strong>Select Song</strong> to specify YouTube videoId) and push <strong>Play</strong> to sing on it. <strong>Record</strong> can record the parameters while you controlling vibrato and reproduce them on <strong>Play</strong>. Parameters on each song will shown on <strong>Parameters</strong> section on the left. <strong>Clear</strong> button will clear the parameters of the current song, and <strong>Export</strong> will export all parameters into json file.</p>
+          <div class="figure">
+            <img src="images/vibrato.png" alt="Where to put electrode" />
+          </div>
+          <h3 id="remote-control">4. Remote control</h3>
+          <p>If you open port 3000 on your machine (already opened if your firewall is off), you can access the page from other device. You can control vibrato from your smartphone with opening <code>http://192.168.0.1/remote.html</code> (192.168.0.1 should be IP address of your machine).</p>
+          <p>In other word if you open port 3000 publicly, API of your EMS is accessible from world. Keep a close eye on security!</p>
+          <p>Enjoy your karaoke time!</p>
+          <h2 id="license">LICENSE</h2>
+          <p>All sources are under MIT license. Music, lyrics are not owned by the authors.</p>
+          <h2 id="authors-and-contributors">Authors and contributors</h2>
+          <ul>
+            <li>Ryohei Fushimi (client, server)</li>
+            <li>Eisuke Fujinawa (arduino, device, movie)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </body>
+</html>

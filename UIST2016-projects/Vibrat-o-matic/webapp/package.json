@@ -1,0 +1,17 @@
+{
+  "name": "vibratomatic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryohei Fushimi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "node-osc": "^2.0.3",
+    "serialport": "^4.0.3",
+    "socket.io": "^1.4.8"
+  }
+}

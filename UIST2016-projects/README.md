@@ -1,4 +1,3 @@
 # UIST 2016 Projects
 
-dear teams, add your projects here!
-Make one folder per team (with team name). 
+You can check here the source code (and/or more information) for the UIST 2016 projects built on top of the openEMSstim. 

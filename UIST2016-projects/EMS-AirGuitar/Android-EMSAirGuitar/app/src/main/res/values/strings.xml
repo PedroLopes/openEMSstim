@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">EMS Air Guitar</string>
+    <string name="ble_not_supported">Your phone does not support Bluetooth LE.</string>
+    <string name="test_ems_intensity">Test EMS Intensity</string>
+    <string name="left_button_text">Channel 1</string>
+    <string name="right_button_text">Channel 2</string>
+
+    <string name="title1">Bob Dylan - Like A Rolling Stone</string>
+    <string name="title2">Mayday - LOVE-ING</string>
+    <string name="title3">Perfume - Cosmic Explorer</string>
+
+</resources>

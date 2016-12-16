@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 ,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <style type="text/css">
+    .progress-bar {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+    }
+    body{
+      height: 100%;
+    }
+    html{
+      height: 100%;
+    }
+    #strength{
+      font-size: 64px;
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.2);
+      text-align: center;
+      margin: auto auto;
+      line-height: 380px;
+    }
+  </style>
+  <title>🎤Vibratomatic</title>
+  </head>
+  <body>
+    <div id="strength">
+    0%
+    </div>
+    <script src="/socket.io/socket.io.js" type="text/javascript"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/bower_components/pressure/dist/pressure.min.js" type="text/javascript"></script>
+    <script src="/bower_components/pressure/dist/jquery.pressure.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var socket = io();
+    $(function () {
+      var pageHeight = $("body").height()
+      var strength = 0;
+      function vibratoOn (evt) {
+        strength = Math.round((1-evt.changedTouches[0].pageY/pageHeight)*100);
+        update();
+        evt.preventDefault();
+        return false;
+      }
+      function vibratoOff (evt) {
+        strength = 0;
+        update();
+        evt.preventDefault();
+        return false;
+      }
+      function update(){
+        $("#strength").text(strength + "%");
+        var color = "white";
+        if(strength > 80){
+          color = "#e74c3c"
+        }else if(strength > 60){
+          color = "#e67e22"
+        }else if(strength > 0){
+          color = "#3498db"
+        }
+        $("body").css("background-color", color);
+      }
+      $("html").on("touchstart", vibratoOn).on("touchmove", vibratoOn).on("touchend", vibratoOff);
+      var prevStrength = 0;
+      setInterval(function () {
+        if (prevStrength != strength){
+          socket.emit('remoteUI', {strength: strength})
+          prevStrength = strength
+        }
+      }, 100)
+    })
+    </script>
+  </body>
+</html>

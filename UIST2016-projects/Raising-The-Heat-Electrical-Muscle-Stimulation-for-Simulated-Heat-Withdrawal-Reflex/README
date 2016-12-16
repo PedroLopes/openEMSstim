@@ -1,0 +1,14 @@
+
+Raising the Heat : Electrical Muscle Stimulation for Simulated Heat Withdrawal Reflex
+
+What causes us to perceive something as hot? We can see it is red or steaming, we can hear it boiling or the metal pinging as it expands and cools, or when we touch it, we can directly perceive its temperature. When something is dangerously hot, a withdrawal reflex jerks our hand away before our brain even processes the fact that the surface is hot. This protects us from burns.
+
+So how could we simulate a burning-hot temperature in AR or VR? Perhaps the withdrawal reflex is not only a reaction. When your brain realizes that the withdrawal reflex has occurred, maybe this changes your perception of the surface to be hotter than it actually is…
+
+Pascal Fortin, Jeffrey Blum, Danny Horodniczy
+McGill University, Shared Reality Lab
+Montreal, Quebec, Canada
+[pefortin,jeffbl,danielh]@cim.mcgill.ca
+
+
+Please find our code and schematics from the Student Innovation Contest at UIST 2016 in this repository.

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Pong Fury</string>
+    <string name="button_viscous">Magnet</string>
+    <string name="button_random_deflect">Shaky Hands</string>
+    <string name="Reset">Reset</string>
+    <string name="title_activity_gamescreen">gamescreen</string>
+</resources>
