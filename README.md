@@ -10,9 +10,10 @@ All the necessary information for getting started is compiled in a step-by-step 
 
 ![Unpacking](extra/images/getting-started/1-the-openemsstim-labels.png)
 
-## Why this project?
+## Why this hardware?
 
-The openEMSstim is a mod by [Pedro Lopes](http://plopes.org) of the awesome [EMS toolkit](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home). See the License which acknowledges all the work from the original makers. This project is forked to (1) provide a simpler design with a few changes, (2) preserve the original design and credit without pulling all the changes to it and (3) be used in the [UIST Student Innovation Contest 2016](https://uist.acm.org/uist2016/contest) without needing to change the instructions of the original project which is meant for HCI researchers and not for a UIST student audience. 	
+The openEMSstim is a derivative by [Pedro Lopes](http://plopes.org) of the awesome [EMS toolkit](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home). See the License which acknowledges all the work from the original makers. This project is forked to (1) provide a simpler design with a few changes, (2) preserve the original design and credit without pulling all the changes to it and (3) be used in the [UIST Student Innovation Contest 2016](https://uist.acm.org/uist2016/contest) without needing to change the instructions of the original project which is meant for HCI researchers and not for a UIST student audience. If you want to see the projects created by the students at UIST 2016 using this repo, see [here](http://plopes.org/ems/) (see the source code [here](https://github.com/PedroLopes/openEMSstim/tree/UIST2016/UIST2016-projects)).
+ 	
 ## Read before using
 * Read the [LICENSE](https://bitbucket.org/MaxPfeiffer/letyourbodymove/wiki/Home/License)
 * Make sure you follow the safety instructions before using it and you are familiar with all the procedure of how to apply EMS safely.
@@ -36,8 +37,7 @@ openEMSstim can be interfaced on virtually anything as long as the device featur
 * Doğa Yüksel <dogayuksel@gmail.com> (cases)
 * Sijing You <sijing.you@student.hpi.uni-potsdam.de> (testing)
 
-
-### Contributers
+### External Contributors
 * Steffen Norbert Franz Blümm <steffen-norbert-franz.bluemm@stud.uni-bamberg.de> (iOS code)
 * Fushimi Ryohei <fushimi.ryohei@gmail.com> (node.js fixes)
 
