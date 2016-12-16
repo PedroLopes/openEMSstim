@@ -6,7 +6,7 @@ These were done in **Eagle**. So that will be the easiest. Eagle is free to use 
 
 ## Status
 Note that V3 hasn't been tested. If you want a stable version, roll back to V2 by doing:
-
+``git checkout 3d5f0cdcc33ded0a633e556be4b3511867ce1fb2``
 
 ## Detailed differences to the original board (openEMSstim_03)
 1. Diode protection against reverse polarity (using http://www.mouser.com/ds/2/302/1PS70SB10-838739.pdf)
