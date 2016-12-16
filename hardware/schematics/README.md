@@ -4,10 +4,15 @@ The openEMSstim is a mod by [Pedro Lopes](plopes.org) of the [EMS toolkit](https
 ## How to open the schematics
 These were done in **Eagle**. So that will be the easiest. Eagle is free to use but not open source, for that matter we are trying to migrate these schematics to a KiCad format which fits better with the nature of this project. Hang in there or help us by doing it and sending us a pull request. 
 
-## Detailed differences to the original board (openEMSstim_02)
-1. Diode protection against reverse polarity
+## Status
+Note that V3 hasn't been tested. If you want a stable version, roll back to V2 by doing:
+
+
+## Detailed differences to the original board (openEMSstim_03)
+1. Diode protection against reverse polarity (using http://www.mouser.com/ds/2/302/1PS70SB10-838739.pdf)
 2. Marked + and - on the board layout, so you know how to plug the battery
-3. (more to come, see hardware specifications in the tutorials folder) 
+3. ON/OFF slider switch (using http://www.alps.com/prod/info/E/HTML/Switch/Slide/SSSS8/SSSS810701.html)
+4. (more to come, see hardware specifications in the tutorials folder) 
 
 ### License and Liability
 
