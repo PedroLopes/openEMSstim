@@ -7,6 +7,7 @@
 4. Add a LiPo battery and a charging circuit
 5. Change the connectors to simple audio plugs and use this for cables:
 - https://www.alibaba.com/product-detail/banana-connector-medical-funcation-electrode-wire_850949001.html
+6. Add screws to the board, requested by Rob
 
 ### Next version of the protocol (future)
 
