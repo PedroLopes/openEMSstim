@@ -137,8 +137,7 @@ const char* const string_table_outputs[] PROGMEM = {ems_channel_1_active, ems_ch
 
 char buffer[32];
 
-
-//process a command message (according to protocol, check https://bitbucket.org/MaxPfeiffer/letyourbodymove/)
+//process a command message (according to protocol, check github for that)
 void processMessage(String message) {
   if (message.charAt(0) == 'W' && message.charAt(1) == 'V') {
     int lastIndexOfComma = message.lastIndexOf(',');
