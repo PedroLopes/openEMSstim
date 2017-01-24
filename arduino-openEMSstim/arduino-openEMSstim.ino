@@ -162,7 +162,7 @@ void processMessage(String message) {
   else {
     printer("\tCommand NON HEX:");
     printer(message);
-    emsSystem.doCommand(&message);
+    doCommand(message[0]);
     //printer("\tERROR: HEX Command Unknown");
   }
 }
