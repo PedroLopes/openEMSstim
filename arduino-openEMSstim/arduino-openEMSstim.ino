@@ -17,7 +17,7 @@
 #include "avr/pgmspace.h"
 
 //BT: the string below is how your EMS module will show up for other BLE devices
-#define EMS_BLUETOOTH_ID "openEMSD"
+#define EMS_BLUETOOTH_ID "emsB10"
 
 //DEBUG: setup for verbose mode (prints debug messages if DEBUG_ON is 1)
 #define DEBUG_ON 1
@@ -47,7 +47,8 @@ void setup() {
 	Serial.begin(19200);
 	softSerial.setTimeout(100);
 	Serial.setTimeout(50);
-	printer("\nSETUP:");
+	printer("\nSETUP for ID:");
+	printer(EMS_BLUETOOTH_ID);
 	Serial.flush();
 
 	//Reset and Initialize the Bluetooth module
@@ -96,7 +97,8 @@ void loop() {
              printer("\tUSB: received command: " + String(message));
              message.trim();   
 	     processMessage(message);
-           } else if (USB_TEST_COMMANDS_ACTIVE) {
+           } 
+           else if (USB_TEST_COMMANDS_ACTIVE) {
              char c = Serial.read();
              printer("\tUSB-TEST-MODE: received command: " + char(c));
 	     doCommand(c);
