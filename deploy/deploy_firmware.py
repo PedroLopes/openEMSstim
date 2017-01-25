@@ -23,6 +23,9 @@ def deployOnBoard():
     deploy = subprocess.call(["ino","upload"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print(deploy)
 
+def setupInoDevEnv():
+    print("TODO: still need setup the ino env automatically w/ latest build and also double checks git pull")
+
 def find_arduino_port():
     find_usb = subprocess.Popen(["ls","/dev/"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     search_results, err = find_usb.communicate()
@@ -51,6 +54,7 @@ def change_line_to(filename,line, text):
 print("openEMSstim Firmware loader for multiple boards.")
 board_no = int(raw_input("How many boards are we loading? "))
 curr_id = int(raw_input("What is the first ID number? "))
+setupInoDevEnv()
 while board_no >= 0:
     print("Ready.")
     print("Connect the first board now.")
