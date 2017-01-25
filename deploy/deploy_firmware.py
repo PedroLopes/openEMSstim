@@ -1,6 +1,5 @@
 from time import sleep
 import subprocess
-from sys import exit
 import sys
 sys.path.append('../apps/python/')
 from pyEMS import openEMSstim
@@ -25,6 +24,21 @@ def deployOnBoard():
 
 def setupInoDevEnv():
     print("TODO: still need setup the ino env automatically w/ latest build and also double checks git pull")
+    #ask for git pull?
+    gitpull = raw_input("Do you want to \">git pull\" the latest verson of this repository? [y/n]")
+    if gitpull == 'y':
+        git = subprocess.call(["git","pull"])
+        print(git)
+    mv = subprocess.call(["mv",sys.argv[0]]+" ../")
+    print(mv)
+    init = subprocess.call(["ino","init"])
+    print(init)
+    #make ino.ini file without board serial and upload but with build atmega type
+    mv = subprocess.call(["mv",sys.argv[0]]+" ../")
+    print(mv)
+    cp = subprocess.call(["cp","../arduino-openEMSstim/* src/")
+    print(cp)
+    #ready to go
 
 def find_arduino_port():
     find_usb = subprocess.Popen(["ls","/dev/"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
