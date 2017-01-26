@@ -1,6 +1,11 @@
 #More node
 apps/node.js/.bin/
 
+#ino stuff should not go on git
+deploy/.build/*
+deploy/lib/*
+deploy/src/*
+
 # Ignore list for Eagle, a PCB layout tool
 
 # Backup files
