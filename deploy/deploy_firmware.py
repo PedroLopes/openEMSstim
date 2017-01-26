@@ -5,6 +5,7 @@ sys.path.append('../apps/python/')
 from pyEMS import openEMSstim
 from pyEMS.EMSCommand import ems_command
 from glob import glob
+import ConfigParser #later change because of py3
 
 #setting the deploy environment
 testing = True
@@ -12,16 +13,36 @@ arduino_port = None
 search_results = -1
 code_filename =  "../arduino-openEMSstim/arduino-openEMSstim.ino" 
 text = "#define EMS_BLUETOOTH_ID "
+Config = ConfigParser.ConfigParser()
 
 # edit the code, add a ID
 
-def deployOnBoard():
+def deployOnBoard(usb_port):
+    global Config
     clean = subprocess.call(["ino","clean"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print(clean)
+    ino = open("ino.ini",'w')
+    Config.set('upload','serial-port', usb_port)
+    Config.set('serial','serial-port', usb_port)
+    Config.write(ino)
+    ino.close()
     build = subprocess.call(["ino","build"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print(build)
     deploy = subprocess.call(["ino","upload"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print(deploy)
+
+def newInoConfig():
+    global Config
+    ino = open("ino.ini",'w')
+    Config.add_section('build')
+    Config.set('build','board-model', "nano328")
+    Config.add_section('upload')
+    Config.set('upload','board-model', "nano328")
+    #Config.set('upload','serial-port', "None")
+    Config.add_section('serial')
+    #Config.set('serial','serial-port', "None")
+    Config.write(ino)
+    ino.close()
 
 def listdir():
     lsdir = subprocess.Popen(["ls", "-la"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -50,7 +71,7 @@ def setupInoDevEnv():
     print(init)
     rm = subprocess.call(["rm","src/sketch.ino"])
     print(rm)
-    #make ino.ini file without board serial and upload but with build atmega type
+    newInoConfig()
     mv = subprocess.call(["mv","../"+str(sys.argv[0]),"."])
     print(mv)
     files_to_copy = glob("../arduino-openEMSstim/*")
@@ -108,7 +129,7 @@ while board_no >= 0:
         print("BUILDING: software to include ID:" + str(curr_id))
         change_line_to(code_filename, 20, text+"\"emsB"+str(curr_id)+"\"")
         print("UPLOADING: to board with ID:" + str(curr_id))
-        #deployOnBoard()        
+        deployOnBoard(arduino_port)        
     if testing == True:
         print("TESTING: executing python test on board ID: " + str(curr_id))
             
