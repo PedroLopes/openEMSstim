@@ -30,7 +30,6 @@ logger.setLevel(logging.WARNING)
 logger.setLevel(logging.INFO)
 logger.info( "ID, serial-port, LED1, channel 1 EMS, LED2, channel 2 EMS, Bluetooth, observations, case, 9v")
 tests = [None] * 10
-curr_test = 0
 
 def testCommandReturn(value, name):
     if value == 0:
