@@ -22,13 +22,13 @@ Config = ConfigParser.ConfigParser()
 
 # setting the logger 
 logger = logging.getLogger('openEMSstim')
-hdlr = logging.FileHandler('deploy' + "_" + str(time.time()) + '.log')
+hdlr = logging.FileHandler('logs/deploy' + "_" + str(time.time()) + '.log')
 formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(message)s"')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.WARNING)
 logger.setLevel(logging.INFO)
-logger.info( "ID","serial-port", "LED1", "channel 1 EMS", "LED2", "channel 2 EMS", "Bluetooth", "observations", "case", "9v")
+logger.info( "ID, serial-port, LED1, channel 1 EMS, LED2, channel 2 EMS, Bluetooth, observations, case, 9v")
 tests = [None] * 10
 curr_test = 0
 
@@ -76,6 +76,8 @@ def setupInoDevEnv():
         testCommandReturn(git, "git pull")
     mv = subprocess.call(["mv",str(sys.argv[0]),".."])
     testCommandReturn(mv, "mv "+ str(sys.argv[0]) + " ..")
+    mv = subprocess.call(["mv","logs",".."])
+    testCommandReturn(mv, "mv logs ..")
     listdir()
     rm = raw_input("Will delete all files (as above) in this dir (except this script). OK? [y/n]")
     if rm == 'y':
@@ -84,6 +86,13 @@ def setupInoDevEnv():
             rm = subprocess.call(["rm","-rf", file_rm])
             testCommandReturn(rm, "rm -rf " +  file_rm)
         rm = subprocess.call(["rm","-r", ".build"])
+    elif rm == 'n':
+        mv = subprocess.call(["mv","../"+str(sys.argv[0]),"."])
+        testCommandReturn(mv, "mv ../ " + str(sys.argv[0]) + " .")
+        mv = subprocess.call(["mv","../logs", "."])
+        testCommandReturn(mv, "mv ../logs .")
+        print("Will abort based on user decision, dir needs to be empty for ino to execute")
+        exit(0)
     listdir()
     init = subprocess.call(["ino","init"])
     testCommandReturn(init, "ino init")
@@ -92,6 +101,8 @@ def setupInoDevEnv():
     newInoConfig()
     mv = subprocess.call(["mv","../"+str(sys.argv[0]),"."])
     testCommandReturn(mv, "mv ../ " + str(sys.argv[0]) + " .")
+    mv = subprocess.call(["mv","../logs", "."])
+    testCommandReturn(mv, "mv ../logs .")
     files_to_copy = glob("../arduino-openEMSstim/*")
     for file_cp in files_to_copy:
         cp = subprocess.call(["cp","../arduino-openEMSstim/" + file_cp, "src/"])
