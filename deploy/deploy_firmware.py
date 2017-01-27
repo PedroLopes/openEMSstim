@@ -23,13 +23,13 @@ Config = ConfigParser.ConfigParser()
 # setting the logger 
 logger = logging.getLogger('openEMSstim')
 hdlr = logging.FileHandler('deploy' + "_" + str(time.time()) + '.log')
-formatter = logging.Formatter('%(asctime)s, %(levelname)s, %(message)s,')
+formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(message)s"')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.WARNING)
 logger.setLevel(logging.INFO)
-logger.info( "ID","serial-port", "LED1", "channel 1 EMS", "LED2" "channel 2 EMS", "Bluetooth", "observations", "case", "9v", "status")
-tests = [11] 
+logger.info( "ID","serial-port", "LED1", "channel 1 EMS", "LED2", "channel 2 EMS", "Bluetooth", "observations", "case", "9v")
+tests = [None] * 10
 curr_test = 0
 
 def testCommandReturn(value, name):
@@ -44,8 +44,8 @@ def deployOnBoard(usb_port):
     clean = subprocess.call(["ino","clean"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     testCommandReturn(clean,"ino clean")
     ino = open("ino.ini",'w')
-    Config.set('upload','serial-port', usb_port)
-    Config.set('serial','serial-port', usb_port)
+    Config.set('upload','serial-port',  usb_port)
+    Config.set('serial','serial-port',  usb_port)
     Config.write(ino)
     ino.close()
     build = subprocess.call(["ino","build"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -109,11 +109,11 @@ def find_arduino_port():
             if a.find("tty.usb") > -1: 
                 print("STATUS: Found arduino with FTDI driver")
                 arduino_port = "/dev/" + str(a)
-                return a, search_results
+                return arduino_port, search_results
             elif a.find("tty.wchusb") > -1: 
                 print("STATUS: Found arduino with non-FTDI driver")
                 arduino_port = "/dev/" + str(a)
-                return a, search_results
+                return arduino_port, search_results
     return None, None
 
 def change_line_to(filename,line, text):
@@ -128,13 +128,12 @@ board_no = int(raw_input("MENU: How many boards are we loading? "))
 curr_id = int(raw_input("MENU: What is the first ID number? "))
 setupInoDevEnv()
 while board_no >= 0:
+    curr_test = 0
     print("STATUS: Ready.")
     print("ACTION: Connect the first board now.")
-    tests[curr_test] = curr_id
+    tests[curr_test] = str(curr_id)
     curr_test+=1
-    arduino_port = True
     while arduino_port is None:
-        arduino_port = find_arduino_port()
         arduino_port, search_results = find_arduino_port()
         print arduino_port
         if arduino_port is None:
@@ -143,7 +142,7 @@ while board_no >= 0:
             choice = raw_input("Try again? (enter to continue, q to exit)")
             if choice == 'q':
                 exit(0)
-    print("STATUS: Board pluged to " + str(arduino_port))
+    print("STATUS: Board plugged to " + str(arduino_port))
     ready = raw_input("ACTION: Confirm? (type enter to continue)")
     if ready == "":
         print("BUILDING: software to include ID:" + str(curr_id))
@@ -159,11 +158,11 @@ while board_no >= 0:
         ems_device = openEMSstim.openEMSstim(arduino_port,19200)
         if ems_device: #check if was created properly
             print("STATUS: Device Found")
-            print("TEST: stimulation to Channel 1, Intensity=1 (out of 100), Duration=1000 (1 second)")
-            command_1 = ems_command(1,1,1000)
+            print("TEST: stimulation to Channel 1, Intensity=0 (out of 100), Duration=2000 (2 seconds)")
+            command_1 = ems_command(1,0,2000)
             ems_device.send(command_1)
             wait = None
-            while wait == 'y' or wait == 'n':
+            while wait != 'y' and wait != 'n':
                 wait = raw_input("ACTION: Did you see the LED on this channel go ON? [y/n/r for repeat]")
                 if wait == 'r':
                     ems_device.send(command_1)
@@ -173,29 +172,30 @@ while board_no >= 0:
                 elif wait == 'n':
                     print("TEST/LOG/B"+str(curr_id)+": LED1 FAIL") #should change to log
                     tests[curr_test] = "FAIL"
-                curr_test+=1
-            print("TEST: stimulation to channel 1 at maximum (100) and you will open the EMS slowly for that channel")
+            curr_test+=1
+            print("TEST: stimulation to channel 1 at maximum (100) for 4 seconds and you will open the EMS slowly for that channel")
             #send direct writes using short commands
-            #command_1 = ems_command(1,1000,2000)
-            #ems_device.send(command_1)
+            command_1 = ems_command(1,100,4000)
+            ems_device.send(command_1)
             wait = None
-            while wait == 'y' or wait == 'n':
+            while wait != 'y' and wait != 'n':
                 wait = raw_input("ACTION: Did you feel the EMS on channel 1? [y/n/r for repeat]")
                 if wait == 'r':
                     pass
-                    #ems_device.send(command_1)
+                    ems_device.send(command_1)
                 elif wait == 'y':
                     print("TEST/LOG/B"+str(curr_id)+": EMS1 OK") 
                     tests[curr_test] = "OK"
                 elif wait == 'n':
                     print("TEST/LOG/B"+str(curr_id)+": EMS1 FAIL") 
                     tests[curr_test] = "FAIL"
-                curr_test+=1
-            print("TEST: stimulation to Channel 2, Intensity=1 (out of 100), Duration=1000 (1 second)")
-            command_2 = ems_command(2,1,1000)
+            curr_test+=1
+
+            print("TEST: LED & channel test: stimulation to Channel 2, Intensity=0 (out of 100), Duration=2000 (2 seconds)")
+            command_2 = ems_command(1,0,2000)
             ems_device.send(command_2)
             wait = None
-            while wait == 'y' or wait == 'n':
+            while wait != 'y' and wait != 'n':
                 wait = raw_input("ACTION: Did you see the LED on this channel go ON? [y/n/r for repeat]")
                 if wait == 'r':
                     ems_device.send(command_2)
@@ -205,17 +205,33 @@ while board_no >= 0:
                 elif wait == 'n':
                     print("TEST/LOG/B"+str(curr_id)+": LED2 FAIL") #should change to log
                     tests[curr_test] = "FAIL"
-                curr_test+=1
-             
-            #do EMS for channel 2
-            
-            #now do both channels
-            print("TEST: stimulation to Channel 1 + 2 (two commands) with Intensity=40 (out of 100), Duration=2000 (2 seconds)")
-            command_1 = ems_command(1,40,2000)
-            command_2 = ems_command(2,40,2000)
-            ems_device.send(command_1)
+            curr_test+=1
+            print("TEST: stimulation to channel 2 at maximum (100) for 4 seconds and you will open the EMS slowly for that channel")
+            #send direct writes using short commands
+            command_2 = ems_command(2,100,4000)
             ems_device.send(command_2)
-            # do wait and ask
+            wait = None
+            while wait != 'y' and wait != 'n':
+                wait = raw_input("ACTION: Did you feel the EMS on channel 2? [y/n/r for repeat]")
+                if wait == 'r':
+                    pass
+                    ems_device.send(command_2)
+                elif wait == 'y':
+                    print("TEST/LOG/B"+str(curr_id)+": EMS2 OK") 
+                    tests[curr_test] = "OK"
+                elif wait == 'n':
+                    print("TEST/LOG/B"+str(curr_id)+": EMS2 FAIL") 
+                    tests[curr_test] = "FAIL"
+            curr_test+=1
+
+            #now do both channels
+            wait = raw_input("TEST: stimulation to Channel 1 + 2 (two commands) with Intensity=40 (out of 100), Duration=2000 (2 seconds). \"y\" to execute or \"n\" to pass ")
+            if wait == 'y':
+                command_1 = ems_command(1,40,2000)
+                command_2 = ems_command(2,40,2000)
+                ems_device.send(command_1)
+                ems_device.send(command_2)
+                sleep(2)
             ems_device.shutdown()
 
             #bluetooth
@@ -223,7 +239,7 @@ while board_no >= 0:
             if bt == 'y':
                 print("TEST/LOG/B"+str(curr_id)+":BT OK") 
                 tests[curr_test] = "OK"
-            elif wait == 'n':
+            elif bt == 'n':
                 print("TEST/LOG/B"+str(curr_id)+": BT FAIL") 
                 tests[curr_test] = "FAIL"
             curr_test+=1
@@ -232,7 +248,7 @@ while board_no >= 0:
             if case == 'y':
                 print("TEST/LOG/B"+str(curr_id)+":BT OK") 
                 tests[curr_test] = "OK"
-            elif wait == 'n':
+            elif case == 'n':
                 print("TEST/LOG/B"+str(curr_id)+": BT FAIL") 
                 tests[curr_test] = "FAIL"
             curr_test+=1
@@ -241,13 +257,15 @@ while board_no >= 0:
             if batt == 'y':
                 print("TEST/LOG/B"+str(curr_id)+":BT OK") 
                 tests[curr_test] = "OK"
-            elif wait == 'n':
+            elif batt == 'n':
                 print("TEST/LOG/B"+str(curr_id)+": BT FAIL") 
                 tests[curr_test] = "FAIL"
             curr_test+=1
             obs = raw_input("Any observations about this board?")
-            tests[curr_test] = obs
-            logger.info(tests.join(','))
+            tests[curr_test] = str(obs)
+            for a in tests:
+                print a
+            logger.info(','.join(tests))
             print("TEST:Done.")
     curr_id += 1
     board_no-=1
