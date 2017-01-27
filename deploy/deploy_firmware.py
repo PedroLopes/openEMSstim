@@ -23,7 +23,7 @@ Config = ConfigParser.ConfigParser()
 # setting the logger 
 logger = logging.getLogger('openEMSstim')
 hdlr = logging.FileHandler('logs/deploy' + "_" + str(time.time()) + '.log')
-formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(message)s"')
+formatter = logging.Formatter('%(asctime)s,%(levelname)s,%(message)s"')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.WARNING)
