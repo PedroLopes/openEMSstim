@@ -6,6 +6,7 @@ deploy/.build/*
 deploy/lib/*
 deploy/src/*
 deploy/ino.ini
+deploy/logs/*.log
 
 # Ignore list for Eagle, a PCB layout tool
 
