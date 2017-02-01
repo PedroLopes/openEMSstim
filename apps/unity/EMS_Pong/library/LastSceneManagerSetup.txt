@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/EMS_Pong.unity
-  isLoaded: 1
-  isActive: 1

@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var SerialPort = require('serialport');
-   portName = "/dev/tty.wchusbserial14210";
+   portName = "/dev/tty.wchusbserial1420";
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 

@@ -5,7 +5,7 @@ from time import sleep
 from pyEMS import openEMSstim
 from pyEMS.EMSCommand import ems_command
 
-my_ems_board = openEMSstim.openEMSstim("/dev/tty.wchusbserial14220",19200)
+my_ems_board = openEMSstim.openEMSstim("/dev/tty.wchusbserial1420",19200)
 while 1:
     choice = int(raw_input("1 or 2? EMS with full intensity on that channel for 2 seconds"))
     my_ems_board.send(ems_command(choice,100,2000))
