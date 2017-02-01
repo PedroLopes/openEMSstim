@@ -17,7 +17,7 @@
 #include "avr/pgmspace.h"
 
 //BT: the string below is how your EMS module will show up for other BLE devices
-#define EMS_BLUETOOTH_ID "openEMSD"
+#define EMS_BLUETOOTH_ID "TEST1"
 
 //DEBUG: setup for verbose mode (prints debug messages if DEBUG_ON is 1)
 #define DEBUG_ON 1
@@ -162,7 +162,7 @@ void processMessage(String message) {
   else {
     printer("\tCommand NON HEX:");
     printer(message);
-    emsSystem.doCommand(&message);
+    //doCommand(&message);
     //printer("\tERROR: HEX Command Unknown");
   }
 }
@@ -179,7 +179,7 @@ void doCommand(char c) {
 		} else {
 			emsChannel1.activate();
       strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[0])));
-			printer(buffer); //"\tEMS: Channel 1 active"
+			printer(buffer); //"\tEMS: Channel 1x active"
 		}
 	} else if (c == '2') {
 		if (emsChannel2.isActivated()) {
