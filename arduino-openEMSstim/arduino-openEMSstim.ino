@@ -137,8 +137,7 @@ const char* const string_table_outputs[] PROGMEM = {ems_channel_1_active, ems_ch
 
 char buffer[32];
 
-
-//process a command message (according to protocol, check https://bitbucket.org/MaxPfeiffer/letyourbodymove/)
+//process a command message (according to protocol, check github for that)
 void processMessage(String message) {
   if (message.charAt(0) == 'W' && message.charAt(1) == 'V') {
     int lastIndexOfComma = message.lastIndexOf(',');
@@ -162,16 +161,27 @@ void processMessage(String message) {
   else {
     printer("\tCommand NON HEX:");
     printer(message);
-    //doCommand(&message);
-    //printer("\tERROR: HEX Command Unknown");
+    doCommand(message[0]);
   }
 }
 
 
 
-//For testing
+// TESTING COMMANDS
+//   For quick testing (e.g., opening the optocoupler ports, etc) you can use these single-char commands (one command = one char).
+//   The cavailable commands are:
+//     "1": toggles the channel 1 between open/closed state (when the channel is closed, the potenciometer position is reset to minimum, i.e., 255)
+//     "2": toggles the channel 1 between open/closed state (when the channel is closed, the potenciometer position is reset to minimum, i.e., 255)
+//     "q": increases EMS signal on channel 1 by decreasing the digital potenciometer wiper position (i.e., resistance lowers and more EMS is passing)
+//           -> note that you have full EMS signal when the potentiometer wiper is at 0 (0 is the maximum) 
+//     "a": decreases EMS signal on channel 1 by increasing the digital potenciometer wiper position (i.e., resistance lowers and more EMS is passing)
+//           -> note that you have no EMS signal when the potentiometer wiper is at 255 (255 is the maximum resistance of the potentiometer) 
+//     "w": increases EMS signal on channel 2 by decreasing the digital potenciometer wiper position (i.e., resistance lowers and more EMS is passing)
+//           -> note that you have full EMS signal when the potentiometer wiper is at 0 (0 is the maximum) 
+//     "s": decreases EMS signal on channel 2 by increasing the digital potenciometer wiper position (i.e., resistance lowers and more EMS is passing)
+//           -> note that you have no EMS signal when the potentiometer wiper is at 255 (255 is the maximum resistance of the potentiometer) 
 void doCommand(char c) {
-	if (c == '1') {
+      if (c == '1') {
 		if (emsChannel1.isActivated()) {
 			emsChannel1.deactivate();
       strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[1])));
@@ -191,27 +201,28 @@ void doCommand(char c) {
       strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[2])));
 			printer(buffer);  //"\tEMS: Channel 2 inactive"
 		}
-	} else if (c == 'q') {
+	} else if (c == 'a') {
 		digitalPot.setPosition(1, digitalPot.getPosition(1) + 1);
     strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[4])));
 		printer(
 				buffer + String(digitalPot.getPosition(1))); //"\tEMS: Intensity Channel 1: "
-	} else if (c == 'w') {
+	} else if (c == 'q') {
     strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[4])));
 		digitalPot.setPosition(1, digitalPot.getPosition(1) - 1);
 		printer(
 				buffer + String(digitalPot.getPosition(1))); //"\tEMS: Intensity Channel 1: "
-	} else if (c == 'e') {
+	} else if (c == 's') {
 		//Note that this is channel 3 on Digipot but EMS channel 2
 		digitalPot.setPosition(3, digitalPot.getPosition(3) + 1);
    strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[5])));
 		printer(
 				buffer + String(digitalPot.getPosition(3))); //"\tEMS: Intensity Channel 2: "
-	} else if (c == 'r') {
+	} else if (c == 'w') {
 		//Note that this is channel 3 on Digipot but EMS channel 2
 		digitalPot.setPosition(3, digitalPot.getPosition(3) - 1);
    strcpy_P(buffer, (char*)pgm_read_word(&(string_table_outputs[5])));
 		printer(
 				buffer + String(digitalPot.getPosition(3))); //"\tEMS: Intensity Channel 2: "
 	}
+        else printer("\tERROR: SINGLE-CHAR Command Unknown");
 }

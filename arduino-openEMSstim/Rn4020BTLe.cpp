@@ -79,7 +79,7 @@ void Rn4020BTLe::init(String bluetoothName) {
 	Serial.println();
 	delay(2000);
 	if ( notification.length()>0){
-		serial->begin(2400);
+        	serial->begin(2400);
 	}else{
 		serial->begin(19200);
 	}
