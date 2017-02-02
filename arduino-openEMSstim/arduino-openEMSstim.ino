@@ -17,14 +17,18 @@
 #include "avr/pgmspace.h"
 
 //BT: the string below is how your EMS module will show up for other BLE devices
-#define EMS_BLUETOOTH_ID "emsB1"
+#define EMS_BLUETOOTH_ID "emsB5"
 
 
 //DEBUG: setup for verbose mode (prints debug messages if DEBUG_ON is 1)
 #define DEBUG_ON 1
 
+
+//JUMP BLUETOOTH RESET
+#define JUMP_BLUETOOTH_RESET 1
+
 //USB: allows commands using the full protocol (refer to https://github.com/PedroLopes/openEMSstim) (by default this is active)
-#define USB_FULL_COMMANDS_ACTIVE 1 
+#define USB_FULL_COMMANDS_ACTIVE 1
 
 //USB: allows to send simplified test commands (one char each, refer to https://github.com/PedroLopes/openEMSstim) to the board via USB (by default this is inactive)
 #define USB_TEST_COMMANDS_ACTIVE 0
@@ -54,10 +58,12 @@ void setup() {
 
 	//Reset and Initialize the Bluetooth module
 	printer("\tBT: RESETTING");
-	bluetoothModule.reset();
+        if (JUMP_BLUETOOTH_RESET == 0)
+	  bluetoothModule.reset();
 	printer("\tBT: RESET DONE");
 	printer("\tBT: INITIALIZING");
-	bluetoothModule.init(EMS_BLUETOOTH_ID);
+        if (JUMP_BLUETOOTH_RESET == 0)
+  	  bluetoothModule.init(EMS_BLUETOOTH_ID);
 	printer("\tBT: INITIALIZED");
 
 	//Add the EMS channels and start the control
@@ -93,20 +99,20 @@ void loop() {
 
 	//Communicate to the EMS-module over USB
         if (Serial.available() > 0) {
-           if (USB_FULL_COMMANDS_ACTIVE) {
              String message = Serial.readStringUntil('\n');
-             printer("\tUSB: received command: " + String(message));
-             message.trim();   
-//	     processMessage(message);
-             emsSystem.doCommand(&message);
-           } 
-           else if (USB_TEST_COMMANDS_ACTIVE) {
-             char c = Serial.read();
-             printer("\tUSB-TEST-MODE: received command: " + char(c));
-	     doCommand(c);
-	   }
-          Serial.flush(); 
-	}
+             if (message.length() > 2) {
+               printer("\tUSB: received command: " + String(message));
+               message.trim();   
+//	       processMessage(message);
+               emsSystem.doCommand(&message);
+             } 
+             else {
+               //char c = Serial.read();
+               printer("\tUSB-TEST-MODE: received command: " + message[0]);
+	       doCommand(message[0]);
+	     }
+         Serial.flush(); 
+        }
 }
 
 //Convert-functions for HEX-Strings "4D"->"M"
@@ -165,7 +171,7 @@ void processMessage(String message) {
   else {
     printer("\tCommand NON HEX:");
     printer(message);
-    doCommand(message[0]);
+    //doCommand(message[0]);
   }
 }
 
