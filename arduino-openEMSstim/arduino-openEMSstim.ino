@@ -27,12 +27,6 @@
 //JUMP BLUETOOTH RESET
 #define JUMP_BLUETOOTH_RESET 1
 
-//USB: allows commands using the full protocol (refer to https://github.com/PedroLopes/openEMSstim) (by default this is active)
-#define USB_FULL_COMMANDS_ACTIVE 1
-
-//USB: allows to send simplified test commands (one char each, refer to https://github.com/PedroLopes/openEMSstim) to the board via USB (by default this is inactive)
-#define USB_TEST_COMMANDS_ACTIVE 0
-
 //helper print function that handles the DEBUG_ON flag automatically
 void printer(String msg, boolean force = false) {
   if (DEBUG_ON || force) {
@@ -57,14 +51,16 @@ void setup() {
 	Serial.flush();
 
 	//Reset and Initialize the Bluetooth module
-	printer("\tBT: RESETTING");
-        if (JUMP_BLUETOOTH_RESET == 0)
-	  bluetoothModule.reset();
-	printer("\tBT: RESET DONE");
-	printer("\tBT: INITIALIZING");
-        if (JUMP_BLUETOOTH_RESET == 0)
-  	  bluetoothModule.init(EMS_BLUETOOTH_ID);
-	printer("\tBT: INITIALIZED");
+    if (JUMP_BLUETOOTH_RESET == 0) {
+        printer("\tBT: RESETTING");
+        bluetoothModule.reset();
+        printer("\tBT: RESET DONE");
+    } 
+    if (JUMP_BLUETOOTH_RESET == 0) { 
+        printer("\tBT: INITIALIZING");
+        bluetoothModule.init(EMS_BLUETOOTH_ID);
+        printer("\tBT: INITIALIZED");
+    }
 
 	//Add the EMS channels and start the control
 	printer("\tEMS: INITIALIZING CHANNELS");
