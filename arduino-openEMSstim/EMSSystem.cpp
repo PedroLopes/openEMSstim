@@ -114,7 +114,8 @@ void EMSSystem::doActionCommand(String *command) {
 			emsChannels[currentChannel]->applySignal();
 		} else {
 			//deactivate all channels if channelNumber is wrong
-			shutDown();
+		    Serial.print("Wrong channel ID");
+            //shutDown();
 		}
 
 	} else {
@@ -199,7 +200,7 @@ void EMSSystem::doCommand(String *command) {
 		} else if (command->charAt(0) == OPTION) {
 			setOption(command);
 		} else {
-			Serial.print("Unknown command: ");
+			Serial.print("EMS_sys: Unknown command: ");
 			Serial.println((*command));
 			Serial.flush();
 		}

@@ -22,7 +22,6 @@
 //DEBUG: setup for verbose mode (prints debug messages if DEBUG_ON is 1)
 #define DEBUG_ON 1
 
-
 //JUMP BLUETOOTH RESET
 #define JUMP_BLUETOOTH_RESET 1
 
