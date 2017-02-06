@@ -28,6 +28,12 @@
 //USB: allows to send simplified test commands (one char each, refer to https://github.com/PedroLopes/openEMSstim) to the board via USB (by default this is inactive)
 #define USB_TEST_COMMANDS_ACTIVE 0
 
+//Multiplexed channel select
+#define chan1 11
+#define chan2 12
+#define chan3 14
+#define chan4 15
+
 //helper print function that handles the DEBUG_ON flag automatically
 void printer(String msg, boolean force = false) {
   if (DEBUG_ON || force) {
@@ -39,9 +45,11 @@ void printer(String msg, boolean force = false) {
 AltSoftSerial softSerial;
 AD5252 digitalPot(0);
 Rn4020BTLe bluetoothModule(2, &softSerial);
-EMSChannel emsChannel1(5, 4, A2, &digitalPot, 1);
-EMSChannel emsChannel2(6, 7, A3, &digitalPot, 3);
-EMSSystem emsSystem(2);
+EMSChannel emsChannel1(5, 4, A2, &digitalPot, 1, chan1, HIGH);
+EMSChannel emsChannel2(6, 7, A3, &digitalPot, 3, chan2, HIGH); 
+EMSChannel emsChannel3(5, 4, A2, &digitalPot, 1, chan3, HIGH);
+EMSChannel emsChannel4(6, 7, A3, &digitalPot, 3, chan4, HIGH);
+EMSSystem emsSystem(4);
 
 void setup() {
 	Serial.begin(19200);
@@ -60,8 +68,13 @@ void setup() {
 
 	//Add the EMS channels and start the control
 	printer("\tEMS: INITIALIZING CHANNELS");
-	emsSystem.addChannelToSystem(&emsChannel1);
-	emsSystem.addChannelToSystem(&emsChannel2);
+  emsSystem.addChannelToSystem(&emsChannel1);
+  emsSystem.addChannelToSystem(&emsChannel2);
+  emsSystem.addChannelToSystem(&emsChannel3);
+  emsSystem.addChannelToSystem(&emsChannel4);
+  
+  emsSystem.enableMultiplex();    //Required to activate multiplexed output
+	
 	EMSSystem::start();
 	printer("\tEMS: INITIALIZED");
 	printer("\tEMS: STARTED");
