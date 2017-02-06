@@ -171,10 +171,15 @@ void processMessage(String message) {
     printer("\tBT: Disconnected");
     emsSystem.shutDown();
   }
-  else {
+  else if (message.charAt(0) == '.'){
     printer("\tCommand NON HEX:");
     printer(message);
-    doCommand(message[0]);
+    doCommand(message[1]);
+  }
+  else  {
+    printer("\tFull Command:");
+    printer(message);
+    emsSystem.doCommand(&message);
   }
 }
 
