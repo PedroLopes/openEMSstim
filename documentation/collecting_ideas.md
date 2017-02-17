@@ -8,6 +8,7 @@
 5. Change the connectors to simple audio plugs and use this for cables:
 - https://www.alibaba.com/product-detail/banana-connector-medical-funcation-electrode-wire_850949001.html
 6. Add screws to the board, requested by Rob
+7. Add Wifi/Bluetooth double shield instead: https://www.seeedstudio.com/ESP-32S-Wifi-Bluetooth-Combo-Module-p-2706.html
 
 ### Next version of the protocol (future)
 
