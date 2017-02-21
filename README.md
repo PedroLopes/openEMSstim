@@ -1,3 +1,9 @@
+#### Navigating the openEMSstim repository:
+
+* [This page = official](https://github.com/PedroLopes/openEMSstim/): your starting point to the official & maintained code.
+* [UIST 2016](https://github.com/PedroLopes/openEMSstim/tree/UIST2016): a sub branch containing the student projects from ACM UIST 2016 SIC. 
+* [simple-multiplexer](https://github.com/PedroLopes/openEMSstim/tree/simple-multiplexer): a sub branch that offers a simple multiplexer from 2 to 5 channels using relays.
+
 # openEMSstim: open-hardware module to adjust the intensity of EMS/TENS stimulators. 
 
 This is the openEMSstim, a **hardware board** based on an Arduino Nano that modulates the amplitude of Electrical Muscle Stimulation (EMS) signals. Here you also find the **software** that communicates with the board and controls it (android, unity, etc). This board is controllable via *Bluetooth* and compatible with any *BLE* device you have (such as your smartphone). It also is controllable via *Serial* (USB) by plugging in a USB cable from your computer to the *Arduino Nano* on the board. 
